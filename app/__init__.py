@@ -57,5 +57,16 @@ def sign_up():
     else:
         return render_template('login.html', errorTextS = "Invalid email")
 
+############################
+### FOR TESTING PURPOSES ###
+############################
+
+@app.route('/lyrics')
+def lyrics():
+    if (session): # If logged in, show the page
+        return render_template('lyrics.html', user = session['username'])
+    else: # ...else show the login page
+        return redirect('/')
+
 if __name__ == "__main__":
   app.run(debug=True)
