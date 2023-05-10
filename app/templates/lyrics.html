@@ -21,15 +21,58 @@
         </div>
         <div class="col-6">
           <div class="p-3 border-0">
-            <h2> Complete Lyrics </h2>
+            <h2> Complete the Lyrics </h2>
 
-            
+            <h4> First Line: </h4>
+            <form action="/generate" method="POST">
+              <input type="text" name="line"></input><br>
+              <input type="submit" value="Generate" class="button-2" role="button" style="margin-top:10px;"></input>
+            </form>
+
+            <p> {{newText}} </p>
+
+            <h5> Settings: </h5>
+            <form action="/setLength" method="POST">
+              <div class="container">
+                <div class="row g-2">
+                  <div class="col-6">
+                    <label><span class="label"> Lines Generated: </span></label><br>
+                    <input type="number" name="line" value="30" min="1" max="100"></input><br>
+                  </div>
+
+                  <div class="col-6">
+                    <label><span class="label"> Similarity to Existing Songs: </span></label><br>
+                    <input type="number" name="line" value="1" min="1" max="10"></input><br>
+                  </div>
+                </div>
+
+                <div class="row g-2">
+                  <div class="col-12">
+                    <input type="submit" value="Set" class="button-2" role="button" style="margin-top:10px;"></input>
+                  </div>
+                </div>
+
+              </div>
+
+            </form>
 
           </div>
         </div>
         <div class="col-6">
           <div class="p-3 border-0">
             <h2> Mixer </h2>
+
+            <form action="/generate" method="POST">
+              <label><span class="label"> First Song </span></label><br>
+              <input type="text" name="line"></input><br>
+              <input type="submit" value="Generate!" class="button-2" role="button" style="margin-top:10px;"></input>
+            </form>
+
+            <form action="/generate" method="POST">
+              <label><span class="label"> Second Song </span></label><br>
+              <input type="text" name="line"></input><br>
+              <input type="submit" value="Generate!" class="button-2" role="button" style="margin-top:10px;"></input>
+            </form>
 
           </div>
         </div>
