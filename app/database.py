@@ -62,5 +62,15 @@ def get_email(username):
     if (select_from("user.db", "users", "username", username, "username") != 0):
         return select_from("user.db", "users", "email", username, "username")
 
+def DB_changepw(username, password, newpassword):
+    db = sqlite3.connect("user.db", check_same_thread=False)
+    c = db.cursor()
+    if(select_from("user.db", "users", "password", username, "username") != password):
+        return "Password doesn't match!!"
+    else:
+        c.execute("UPDATE users SET password =? WHERE username =?", (newpassword, username))
+    db.commit()
+    return "New password saved!" #save changes
+
 db.commit()
 db.close()

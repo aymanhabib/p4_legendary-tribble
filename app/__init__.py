@@ -57,5 +57,12 @@ def sign_up():
     else:
         return render_template('login.html', errorTextS = "Invalid email")
 
+@app.route('/change_pw', methods = ['POST'])
+def changepw():
+    if request.form == 'POST':
+        old = request.args['oldpass']
+        new = request.args['newpass']
+        return render_template('profile.html', message = DB_changepw(session['username'], new) 
+
 if __name__ == "__main__":
   app.run(debug=True)
