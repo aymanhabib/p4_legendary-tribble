@@ -57,16 +57,16 @@ def sign_up():
     else:
         return render_template('login.html', errorTextS = "Invalid email")
 
-############################
-### FOR TESTING PURPOSES ###
-############################
+@app.route('/profile', methods = ['POST'])
+def profile():
+    render_template('profile.html')
 
-@app.route('/lyrics')
-def lyrics():
-    if (session): # If logged in, show the page
-        return render_template('lyrics.html', user = session['username'])
-    else: # ...else show the login page
-        return redirect('/')
+@app.route('/change_pw', methods = ['POST'])
+def changepw():
+    if request.form == 'POST':
+        old = request.args['oldpass']
+        new = request.args['newpass']
+        return render_template('profile.html', message = DB_changepw(session['username'], new))
 
 if __name__ == "__main__":
   app.run(debug=True)

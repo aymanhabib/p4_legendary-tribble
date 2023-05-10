@@ -27,3 +27,8 @@ karenS -- 2023-5-4 1:30 PM
   - Login working, user database in place
     - No use for email? (possibly remove later)
   - Starter files in place
+
+aymanH -- 2023-5-10 1:29 PM
+--------------------------------------------------------------
+ - Spotify API provides artist's top 10 tracks and id's of selected track
+ - Trying to retrieve data about each song
