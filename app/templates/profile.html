@@ -22,8 +22,9 @@
         <div class="col-6">
           <div class="p-3 border-0">
             <h2> Update New Password </h2>
+            <p> {{message}} </p>
             <p style="color:#9A0000;"> {{errorTextS}} </p>
-            <form action="/change_pw" method="POST">
+            <form action="/change_pw" method="GET">
               <label><span class="label"> Current Password </span></label><br>
               <input type="password" name="oldpass"></input><br><br>
               <label><span class="label"> New Password </span></label><br>
@@ -35,9 +36,11 @@
         </div>
       </div>
     </div>
-<p>
-{{message}}
-</p>
-  </body>
+
+<form method="POST">
+  <button class="p-1 mb-3 rounded-3"formaction="/home">Return Home</button>
+</form>
+
+</body>
 
 </html>
