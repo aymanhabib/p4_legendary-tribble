@@ -1,13 +1,10 @@
-from dotenv import load_dotenv
 import os
 import base64
 from requests import post, get
 import json
 
-load_dotenv()
-
-client_id = os.getenv("CLIENT_ID")
-client_secret = os.getenv("CLIENT_SECRET")
+client_id = "7e8682088ce94ba4b6599a96fa11129b"
+client_secret = "e68b36407b4a4cb9ad14c3ea756076fd"
 
 # print(client_id, client_secret)
 
