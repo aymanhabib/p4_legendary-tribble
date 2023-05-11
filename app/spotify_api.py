@@ -41,7 +41,6 @@ def search_for_artist(token, artist_name):
     if len(json_result) == 0:
         print("No artist with this name exists...")
         return None
-    
     return json_result[0]
 
 def get_songs_by_artist(token, artist_id):
@@ -60,22 +59,26 @@ songs = get_songs_by_artist(token, artist_id)
 
 Top10Songs = {}
 for idx, song in enumerate(songs):
+    # print(song)
     print(f"{idx + 1}. {song['name']}")
     rank = idx + 1
     songName = song['name']
     Top10Songs[songName] = song
 
+# for song in Top10Songs:
+   # print(song)
+   # print(Top10Songs[song]['name'])
+   # print(Top10Songs[song]['id'])
+
 title = input("Enter desired track name (Case sensitive): ")
+# print(Top10Songs)
 
 def get_song_features(token, title):
-    track_id = Top10Songs[title]['album']['artists'][0]['id']
-    print(Top10Songs[title])
-    print(track_id)
+    track_id = Top10Songs[title]['id']
     url = f"https://api.spotify.com/v1/audio-features/{track_id}"
     headers = get_auth_header(token)
     result = get(url, headers=headers)
     json_result = json.loads(result.content)
     print(json_result)
-
     
 get_song_features(token, title)
