@@ -11,6 +11,11 @@ def log_in():
         return redirect('/home')
     return render_template('login.html') # For login AND signup
 
+@app.route('/logout')
+def logout():
+  session.pop('username')
+  return redirect('/')
+
 @app.route('/home', methods = ['POST', 'GET'])
 def home():
     if (session): # If logged in, show the home page
