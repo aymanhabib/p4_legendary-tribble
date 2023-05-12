@@ -49,14 +49,15 @@ def get_songs_by_artist(token, artist_id):
     return songs
 
 Top10Songs = {}
-Top10String = f""
 def getTop10(songs):
+    Top10String = f""
     for idx, song in enumerate(songs):
-        Top10String+= f"{idx + 1}. {song['name']}"
+        Top10String+= f"{idx + 1}. {song['name']} \n"
         rank = idx + 1
         songName = song['name']
         Top10Songs[songName] = song
     return Top10String
+
 
 """
 token = get_token()
