@@ -45,9 +45,17 @@ def get_songs_by_artist(token, artist_id):
     headers = get_auth_header(token)
     result = get(url, headers=headers)
     json_result = json.loads(result.content)["tracks"]
-    return json_result
+    return Top10Songs(json_result)
 
+Top10Songs = {}
+def getTop10(songs):
+    for idx, song in enumerate(songs):
+        rank = idx + 1
+        songName = song['name']
+        Top10Songs[songName] = song
+    return Top10Songs
 
+"""
 token = get_token()
 artist_name = input("Enter desired artist: ")
 result = search_for_artist(token, artist_name)
@@ -61,6 +69,7 @@ for idx, song in enumerate(songs):
     rank = idx + 1
     songName = song['name']
     Top10Songs[songName] = song
+  """
 
 # for song in Top10Songs:
    # print(song)
