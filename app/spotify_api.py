@@ -45,7 +45,10 @@ def get_songs_by_artist(token, artist_id):
     headers = get_auth_header(token)
     result = get(url, headers=headers)
     json_result = json.loads(result.content)["tracks"]
-    return Top10Songs(json_result)
+    songs = Top10Songs(json_result)
+    for idx, song in enumerate(songs):
+        print(f"{idx + 1}. {song['name']}")
+        rank = idx + 1
 
 Top10Songs = {}
 def getTop10(songs):
