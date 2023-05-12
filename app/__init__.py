@@ -1,6 +1,7 @@
 from flask import Flask, render_template, session, request, redirect, url_for
 import requests, os, json
 from database import *
+from spotify_api import *
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32) # This is NOT secure
@@ -79,6 +80,18 @@ def changepw():
         message = DB_changepw(session['username'], new)
         return render_template('profile.html', message = message,Username = session['username'])
     return render_template('profile.html')
+
+@app.route('/artist', methods = ['GET', 'POST'])
+def artist():
+    if request.method == 'GET':
+        artist = request.args['artist_name']
+        token = get_token()
+        result = search_for_artist(token, artist)
+        artist_id = result["id"]
+        songs = get_songs_by_artist(token, artist_id)
+        return render_template('artist.html', data = songs)
+    return render_template('artist.html')
+
 
 if __name__ == "__main__":
   app.run(debug=True)

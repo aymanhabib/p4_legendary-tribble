@@ -8,12 +8,17 @@
     <link rel="stylesheet" Type="text/css" href="../static/css/style.css">
     <script src="../static/js/script.js"></script>
   </head>
-  <form action="/profile" method="POST">
-    <input type="submit" value="profile" class="button-2" role="button"></input>
+
+  <form action="/artist" method="GET">
+    <label><span class="label"> Input an artist name </span></label><br>
+    <input type="text" name="artist_name"></input><br><br>
+    <input type="submit" value="Submit" class="button-2" role="button"></input>
   </form>
-  <form action="/artist" method="POST">
-    <input type="submit" value="Artist" class="button-2" role="button"></input>
-  </form>
-  <form>
-    <button class="p-1 mb-3 rounded-3"formaction="/logout">Logout</button>
+
+<p>
+{{data}}
+</p>
+
+  <form method="POST">
+    <button class="p-1 mb-3 rounded-3"formaction="/home">Return Home</button>
   </form>

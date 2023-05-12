@@ -80,7 +80,7 @@ for idx, song in enumerate(songs):
    # print(Top10Songs[song]['name'])
    # print(Top10Songs[song]['id'])
 
-title = input("Enter desired track name (Case sensitive): ")
+#title = input("Enter desired track name (Case sensitive): ")
 # print(Top10Songs)
 
 def get_song_features(token, title):
@@ -90,5 +90,5 @@ def get_song_features(token, title):
     result = get(url, headers=headers)
     json_result = json.loads(result.content)
     print(json_result)
-    
-get_song_features(token, title)
+
+#get_song_features(token, title)
