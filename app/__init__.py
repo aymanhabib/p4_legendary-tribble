@@ -11,7 +11,12 @@ def log_in():
         return redirect('/home')
     return render_template('login.html') # For login AND signup
 
-@app.route('/home')
+@app.route('/logout')
+def logout():
+  session.pop('username')
+  return redirect('/')
+
+@app.route('/home', methods = ['POST', 'GET'])
 def home():
     if (session): # If logged in, show the home page
         return render_template('home.html', user = session['username'])
@@ -57,16 +62,23 @@ def sign_up():
     else:
         return render_template('login.html', errorTextS = "Invalid email")
 
-@app.route('/profile', methods = ['POST'])
+@app.route('/profile', methods = ['POST','GET'])
 def profile():
-    render_template('profile.html')
+    return render_template('profile.html', Username = session['username'])
 
-@app.route('/change_pw', methods = ['POST'])
+@app.route('/change_pw', methods = ['GET','POST'])
 def changepw():
-    if request.form == 'POST':
+    if request.method == 'GET':
         old = request.args['oldpass']
         new = request.args['newpass']
-        return render_template('profile.html', message = DB_changepw(session['username'], new))
+        confirm = request.args['confirmpass']
+        if(old != select_from("user.db", "users", "password", session['username'], "username")):
+            return render_template('profile.html', message = "Authentication fail, wrong password entered", Username = session['username'])
+        if (new != confirm):
+            return render_template('profile.html', message = "Password Don't match",Username = session['username'])
+        message = DB_changepw(session['username'], new)
+        return render_template('profile.html', message = message,Username = session['username'])
+    return render_template('profile.html')
 
 if __name__ == "__main__":
   app.run(debug=True)
