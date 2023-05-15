@@ -83,8 +83,8 @@ def changepw():
 
 @app.route('/artist', methods = ['GET', 'POST'])
 def artist():
-    if request.method == 'GET':
-        artist = request.args['artist_name']
+    if request.method == 'POST':
+        artist = request.form['artist_name']
         token = get_token()
         result = search_for_artist(token, artist)
         artist_id = result["id"]
