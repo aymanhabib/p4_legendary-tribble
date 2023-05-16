@@ -65,7 +65,9 @@ def sign_up():
 
 @app.route('/profile', methods = ['POST','GET'])
 def profile():
-    return render_template('profile.html', Username = session['username'])
+    if 'username' in session:
+        return render_template('profile.html', Username = session['username'])
+
 
 @app.route('/change_pw', methods = ['GET','POST'])
 def changepw():
@@ -91,6 +93,10 @@ def artist():
         songs = get_songs_by_artist(token, artist_id)
         return render_template('artist.html', data = songs)
     return render_template('artist.html')
+
+@app.route('/lyrics' , methods = ['GET', 'POST'])
+def lyrics():
+    return render_template('lyrics.html')
 
 
 if __name__ == "__main__":
