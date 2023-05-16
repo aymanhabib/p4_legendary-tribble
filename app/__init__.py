@@ -9,7 +9,7 @@ app.secret_key = os.urandom(32) # This is NOT secure
 @app.route('/')
 def log_in():
     if 'username' in session: # If already logged in
-        return redirect('/home')
+        return redirect('/home', user = session["username"])
     return render_template('login.html') # For login AND signup
 
 @app.route('/logout')

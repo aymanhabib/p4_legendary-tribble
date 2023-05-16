@@ -43,7 +43,12 @@ Jian Hong Li -- 2023-5-15 2:00 PM
  - Artist page
  - Bugs
 
-Jian Hong Li -- 2023-5-16 2:00 PM
+Jian Hong Li -- 2023-5-16 1:30 PM
 --------------------------------------------------------------
   - Lyrics page
   - Features
+
+Jian Hong Li -- 2023-5-16 2:00 PM
+--------------------------------------------------------------
+    - Features
+    - Some bootstrap
