@@ -86,12 +86,15 @@ def changepw():
 @app.route('/artist', methods = ['GET', 'POST'])
 def artist():
     if request.method == 'POST':
-        artist = request.form['artist_name']
-        token = get_token()
-        result = search_for_artist(token, artist)
-        artist_id = result["id"]
-        songs = get_songs_by_artist(token, artist_id)
-        return render_template('artist.html', data = songs)
+        if not request.form['artist_name']:
+            return render_template('artist.html', message = "Input is empty")
+        else:
+            artist = request.form['artist_name']
+            token = get_token()
+            result = search_for_artist(token, artist)
+            artist_id = result["id"]
+            songs = get_songs_by_artist(token, artist_id)
+            return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
     return render_template('artist.html')
 
 @app.route('/lyrics' , methods = ['GET', 'POST'])
