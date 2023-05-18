@@ -32,17 +32,17 @@
             <p> {{newText}} </p>
 
             <h5> Settings: </h5>
-            <form action="/setLength" method="POST">
+            <form action="/settings" method="POST">
               <div class="container">
                 <div class="row g-2">
                   <div class="col-6">
                     <label><span class="label"> Lines Generated: </span></label><br>
-                    <input type="number" name="line" value="30" min="1" max="100"></input><br>
+                    <input type="number" name="lines" value={{dLines}} min="1" max="100"></input><br>
                   </div>
 
                   <div class="col-6">
                     <label><span class="label"> Similarity to Existing Songs: </span></label><br>
-                    <input type="number" name="line" value="1" min="1" max="10"></input><br>
+                    <input type="number" name="similarity" value={{dSim}} min="1" max="10"></input><br>
                   </div>
                 </div>
 

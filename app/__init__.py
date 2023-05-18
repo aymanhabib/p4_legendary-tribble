@@ -5,8 +5,15 @@ from database import *
 app = Flask(__name__)
 app.secret_key = os.urandom(32) # This is NOT secure
 
+# For lyric generation
+lines = 30
+similarity = 1
+
 @app.route('/')
 def log_in():
+    global lines, similarity
+    lines = 30
+    similarity = 1
     if 'username' in session: # If already logged in
         return redirect('/home')
     return render_template('login.html') # For login AND signup
@@ -77,8 +84,32 @@ def changepw():
         if (new != confirm):
             return render_template('profile.html', message = "Password Don't match",Username = session['username'])
         message = DB_changepw(session['username'], new)
-        return render_template('profile.html', message = message,Username = session['username'])
+        return render_template('profile.html', message = message, Username = session['username'])
     return render_template('profile.html')
+
+
+
+@app.route('/lyrics', methods = ['GET','POST'])
+def lyrics(*text):
+    if 'username' in session: # If already logged in
+        if (len(text) == 0): #weird handling?
+            text = ""
+        print(lines)
+        return render_template('lyrics.html', newText = text, dLines = lines, dSim = similarity)
+    return render_template('login.html')
+
+@app.route('/generate', methods = ['GET','POST'])
+def generate():
+    return redirect('/lyrics')
+
+@app.route('/settings', methods = ['GET','POST'])
+def settings():
+    value = request.form.to_dict(flat=False)
+    global lines
+    lines = value["lines"][0]
+    global similarity
+    similarity = value["similarity"][0]
+    return redirect('/lyrics')
 
 if __name__ == "__main__":
   app.run(debug=True)
