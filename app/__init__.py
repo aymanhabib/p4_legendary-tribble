@@ -109,6 +109,8 @@ def lyrics(*text):
     if 'username' in session: # If already logged in
         if (len(text) == 0): #weird handling?
             text = ""
+        else:
+            text = text[0]
         return render_template('lyrics.html', newText = text, dLines = lines, dSim = similarity)
     return render_template('login.html')
 
@@ -128,9 +130,9 @@ def generate():
 def settings():
     value = request.form.to_dict(flat=False)
     global lines
-    lines = value["lines"][0]
+    lines = int(value["lines"][0])
     global similarity
-    similarity = value["similarity"][0]
+    similarity = int(value["similarity"][0])
     return redirect('/lyrics')
 
 
