@@ -97,6 +97,18 @@ def artist():
             return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
     return render_template('artist.html')
 
+@app.route('/song_data', methods = ['GET', 'POST'])
+def display_song_data():
+    if request.method == 'POST':
+        if not request.form['song_name']:
+            return render_template('song_data.html', message = "Invalid input")
+        else:
+            song = request.form['song_name']
+            token = get_token()
+            result = get_song_features(token, song)
+            return render_template('song_data.html', data = result)
+    return render_template('song_data.html')
+
 @app.route('/lyrics' , methods = ['GET', 'POST'])
 def lyrics():
     return render_template('lyrics.html')

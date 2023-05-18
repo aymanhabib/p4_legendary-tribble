@@ -89,6 +89,6 @@ def get_song_features(token, title):
     headers = get_auth_header(token)
     result = get(url, headers=headers)
     json_result = json.loads(result.content)
-    print(json_result)
+    return(json_result)
 
 #get_song_features(token, title)

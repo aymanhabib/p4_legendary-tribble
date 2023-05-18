@@ -18,8 +18,12 @@
 <br></br>
 <h2 class = "text-success"> {{artist}} </h2>
 <p class = > {{data}} </p>
-
 <h2 class = "text-danger"> {{message}} </h2>
+<form action="/song_data" method="POST">
+  <label><span class="label"> Input a song title (case sensitive) </span></label><br>
+    <input type="text" name="song_name"></input><br><br>
+    <input type="submit" value="Submit" class="button-2" role="button"></input>
+</form>
   <form method="POST">
     <button class="p-1 mb-3 rounded-3"formaction="/home">Return Home</button>
   </form>
