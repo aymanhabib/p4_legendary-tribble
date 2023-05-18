@@ -146,4 +146,43 @@ def get_video_statistics(video_link):
     return None
 
 
-def extract_video_id
+def extract_video_id(video_link):
+    # Extract the video ID from the link
+    video_id = None
+    if 'youtube.com/watch?v=' in video_link:
+        video_id = video_link.split('youtube.com/watch?v=')[1].split('&')[0]
+    elif 'youtu.be/' in video_link:
+        video_id = video_link.split('youtu.be/')[1].split('?')[0]
+    return video_id
+
+
+
+# Format the output and display the results
+def format_output(songs):
+    print("Top 50 Songs:")
+    print("-----------------------------")
+    for i, song in enumerate(songs, 1):
+        name = song['track']['name']
+        artist = song['track']['artists'][0]['name']
+        video_link = search_youtube_video(artist, name)
+
+        print(f"{i}. {name} - {artist}")
+        if video_link:
+            print(f"YouTube Video Link: {video_link}")
+            statistics = get_video_statistics(video_link)
+            if statistics:
+                print("Video Statistics:")
+                print(f"Views: {statistics.get('viewCount', 'N/A')}")
+                print(f"Likes: {statistics.get('likeCount', 'N/A')}")
+                print(f"Dislikes: {statistics.get('dislikeCount', 'N/A')}")
+                print(f"Comments: {statistics.get('commentCount', 'N/A')}")
+        else:
+            print("No YouTube video found for this song.")
+        print("-----------------------------")
+
+
+# Get top songs from Spotify
+top_songs = get_top_songs()
+
+# Format and display the combined output
+format_output(top_songs)
