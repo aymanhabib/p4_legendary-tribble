@@ -45,3 +45,45 @@ def get_top_songs():
     return data['tracks']['items']
 
 
+def search_youtube_video(artist, song_name):
+    # Format the search query
+    query = f'{artist} {song_name}'
+    query_encoded = urllib.parse.quote(query)
+
+    # Construct the API request URL
+    url = f'{YOUTUBE_API_BASE_URL}search?part=snippet&type=video&q={query_encoded}&key={YOUTUBE_API_KEY}'
+
+    # Send the request to the API
+    response = requests.get(url)
+    data = response.json()
+
+    # Check for errors in the API response
+    if 'error' in data:
+        error_message = data['error']['message']
+        print(f"YouTube API Error: {error_message}")
+        return None
+
+    # Extract the video link from the API response
+    if 'items' in data and len(data['items']) > 0:
+        video_id = data['items'][0]['id']['videoId']
+        video_link = f'https://www.youtube.com/watch?v={video_id}'
+        return video_link
+
+    return None
+
+# Format the output and display the results
+def format_output(songs):
+    print("Top 10 Songs:")
+    print("-----------------------------")
+    for i, song in enumerate(songs, 1):
+        name = song['track']['name']
+        artist = song['track']['artists'][0]['name']
+        video_link = search_youtube_video(artist, name)
+        
+        print(f"{i}. {name} - {artist}")
+        if video_link:
+            print(f"YouTube Video Link: {video_link}")
+        else:
+            print("No YouTube video found for this song.")
+        print("-----------------------------")
+
