@@ -106,7 +106,7 @@ def display_song_data():
             song = request.form['song_name']
             token = get_token()
             result = get_song_features(token, song)
-            return render_template('song_data.html', data = result)
+            return render_template('song_data.html', song_data = result)
     return render_template('song_data.html')
 
 @app.route('/lyrics' , methods = ['GET', 'POST'])

@@ -89,6 +89,14 @@ def get_song_features(token, title):
     headers = get_auth_header(token)
     result = get(url, headers=headers)
     json_result = json.loads(result.content)
-    return(json_result)
+    return(get_chart_data(json_result))
 
-#get_song_features(token, title)
+def get_chart_data(data):
+    song_data = {}
+    song_data['danceability'] = data['danceability']
+    song_data['energy'] = data['energy']
+    song_data['acousticness'] = data['acousticness']
+    song_data['speechiness'] = data['speechiness']
+    song_data['liveness'] = data['liveness']
+    return song_data
+

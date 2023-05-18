@@ -16,18 +16,17 @@
       </div>
 
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+      {{song_data}}
+      {{song_data['danceability']}}
     <script>
-        print(data)
         const ctx = document.getElementById('myChart');
-        
         new Chart(ctx, {
             type: 'radar',
             data: {
                 labels: ['danceability', 'energy', 'acousticness', 'speechiness', 'liveness'],
                 datasets: [{
                     label: 'Music data',
-                    data: [65, 59, 90, 81, 56, 55, 40],
+                    data: ["{{song_data['danceability']}}", "{{song_data['energy']}}", "{{song_data['acousticness']}}", "{{song_data['speechiness']}}", "{{song_data['liveness']}}"],
                     fill: true,
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderColor: 'rgb(255, 99, 132)',
