@@ -94,13 +94,20 @@ def lyrics(*text):
     if 'username' in session: # If already logged in
         if (len(text) == 0): #weird handling?
             text = ""
-        print(lines)
         return render_template('lyrics.html', newText = text, dLines = lines, dSim = similarity)
     return render_template('login.html')
 
 @app.route('/generate', methods = ['GET','POST'])
 def generate():
-    return redirect('/lyrics')
+    data = open("./lyrics/data.txt", "r")
+    data = json.load(data)
+    print(len(data))
+
+    text = ""
+    for i in range(lines * 8): #words per line
+        text += ""
+
+    return lyrics(text) #weird?
 
 @app.route('/settings', methods = ['GET','POST'])
 def settings():
