@@ -87,3 +87,63 @@ def format_output(songs):
             print("No YouTube video found for this song.")
         print("-----------------------------")
 
+
+# Format the output and display the results
+def format_output(songs):
+    print("Top 10 Songs:")
+    print("-----------------------------")
+    for i, song in enumerate(songs, 1):
+        name = song['track']['name']
+        artist = song['track']['artists'][0]['name']
+        video_link = search_youtube_video(artist, name)
+
+        print(f"{i}. {name} - {artist}")
+        if video_link:
+            print(f"YouTube Video Link: {video_link}")
+        else:
+            print("No YouTube video found for this song.")
+        print("-----------------------------")
+
+# Format the output and display the results
+def format_output(songs):
+    print("Top 50 Songs:")
+    print("-----------------------------")
+    for i, song in enumerate(songs, 1):
+        name = song['track']['name']
+        artist = song['track']['artists'][0]['name']
+        video_link = search_youtube_video(artist, name)
+
+        print(f"{i}. {name} - {artist}")
+        if video_link:
+            print(f"YouTube Video Link: {video_link}")
+        else:
+            print("No YouTube video found for this song.")
+        print("-----------------------------")
+
+
+
+def get_video_statistics(video_link):
+    # Extract the video ID from the link
+    video_id = extract_video_id(video_link)
+
+
+    if video_id:
+        # Construct the API request URL
+        url = f'{YOUTUBE_API_BASE_URL}videos?part=statistics&id={video_id}&key={YOUTUBE_API_KEY}'
+
+
+        # Send the request to the API
+        response = requests.get(url)
+        data = response.json()
+
+
+        # Extract and return the video statistics
+        if 'items' in data and len(data['items']) > 0:
+            statistics = data['items'][0]['statistics']
+            return statistics
+
+
+    return None
+
+
+def extract_video_id
