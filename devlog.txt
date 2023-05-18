@@ -37,3 +37,23 @@ ayman4 -- 2023-5-10 3:30 PM
 --------------------------------------------------------------
  - spotify_api now retrieves data about each song, such as "danceability", "acousticness", etc
  - now working to retrieve artist info (followers, genres, etc)
+
+Jian Hong Li -- 2023-5-15 2:00 PM
+--------------------------------------------------------------
+ - Artist page
+ - Bugs
+
+Jian Hong Li -- 2023-5-16 1:30 PM
+--------------------------------------------------------------
+  - Lyrics page
+  - Features
+
+Jian Hong Li -- 2023-5-16 2:00 PM
+--------------------------------------------------------------
+    - Features
+    - Some bootstrap
+
+Jian Hong Li -- 2023-5-17 1:20 PM
+--------------------------------------------------------------
+    - Features
+    - Some bootstrap

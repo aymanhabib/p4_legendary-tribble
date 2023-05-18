@@ -1,6 +1,7 @@
 from flask import Flask, render_template, session, request, redirect, url_for
 import requests, os, json
 from database import *
+from spotify_api import *
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32) # This is NOT secure
@@ -15,7 +16,7 @@ def log_in():
     lines = 30
     similarity = 1
     if 'username' in session: # If already logged in
-        return redirect('/home')
+        return redirect('/home', user = session["username"])
     return render_template('login.html') # For login AND signup
 
 @app.route('/logout')
@@ -71,7 +72,8 @@ def sign_up():
 
 @app.route('/profile', methods = ['POST','GET'])
 def profile():
-    return render_template('profile.html', Username = session['username'])
+    if 'username' in session:
+        return render_template('profile.html', Username = session['username'])
 
 @app.route('/change_pw', methods = ['GET','POST'])
 def changepw():
@@ -87,6 +89,19 @@ def changepw():
         return render_template('profile.html', message = message, Username = session['username'])
     return render_template('profile.html')
 
+@app.route('/artist', methods = ['GET', 'POST'])
+def artist():
+    if request.method == 'POST':
+        if not request.form['artist_name']:
+            return render_template('artist.html', message = "Input is empty")
+        else:
+            artist = request.form['artist_name']
+            token = get_token()
+            result = search_for_artist(token, artist)
+            artist_id = result["id"]
+            songs = get_songs_by_artist(token, artist_id)
+            return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
+    return render_template('artist.html')
 
 
 @app.route('/lyrics', methods = ['GET','POST'])
@@ -117,6 +132,7 @@ def settings():
     global similarity
     similarity = value["similarity"][0]
     return redirect('/lyrics')
+
 
 if __name__ == "__main__":
   app.run(debug=True)
