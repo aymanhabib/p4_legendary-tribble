@@ -27,26 +27,55 @@ karenS -- 2023-5-4 1:30 PM
   - Login working, user database in place
     - No use for email? (possibly remove later)
   - Starter files in place
-
+  
+Eric Sohel -- 2023-5-1 2:00 PM
+--------------------------------------------------------------
+ - worked on the apis for the music 
+ 
+   
+Eric Sohel -- 2023-5-4 2:00 PM
+--------------------------------------------------------------
+ - did more researchon the apis for the music 
+ 
 aymanH -- 2023-5-10 1:29 PM
 --------------------------------------------------------------
  - Spotify API provides artist's top 10 tracks and id's of selected track
  - Trying to retrieve data about each song
-
+ 
+  
 ayman4 -- 2023-5-10 3:30 PM
 --------------------------------------------------------------
  - spotify_api now retrieves data about each song, such as "danceability", "acousticness", etc
  - now working to retrieve artist info (followers, genres, etc)
+  
+Eric Sohel -- 2023-5-11 2:00 PM
+--------------------------------------------------------------
+ - finished working on the api stuff for stopfy and pulling lyrics 
+ 
+ 
+ Eric Sohel -- 2023-5-12 2:00 PM
+--------------------------------------------------------------
+ - found database for the lyrics generation and started working on the html 
+
 
 Jian Hong Li -- 2023-5-15 2:00 PM
 --------------------------------------------------------------
  - Artist page
  - Bugs
+ 
+ Eric Sohel -- 2023-5-15 2:00 PM
+--------------------------------------------------------------
+ - started working on graphs etc
 
 Jian Hong Li -- 2023-5-16 1:30 PM
 --------------------------------------------------------------
   - Lyrics page
   - Features
+  
+   Eric Sohel -- 2023-5-18 2:00 PM
+--------------------------------------------------------------
+ - got humoungous amount of data and put it into graphs 
+
 
 Jian Hong Li -- 2023-5-16 2:00 PM
 --------------------------------------------------------------
