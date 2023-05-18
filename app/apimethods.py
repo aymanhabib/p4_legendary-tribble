@@ -30,3 +30,17 @@ def get_token():
 
     token = json_result["access_token"]
     return token
+
+# Get top 10 songs from Spotify
+def get_top_songs():
+    access_token = get_token()
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.get(f'{SPOTIFY_API_BASE_URL}/playlists/37i9dQZEVXbMDoHDwVN2tF', headers=headers)  # 37i9dQZEVXbMDoHDwVN2tF is the id for Global Top 50
+    data = response.json()
+
+    return data['tracks']['items']
+
