@@ -103,7 +103,7 @@ def artist():
             return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
     return render_template('artist.html')
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 
 @app.route('/lyrics', methods = ['GET','POST'])
 def lyrics(*text):
@@ -135,7 +135,7 @@ def settings():
     global similarity
     similarity = int(value["similarity"][0])
     return redirect('/lyrics')
-=======
+#=======
 @app.route('/song_data', methods = ['GET', 'POST'])
 def display_song_data():
     if request.method == 'POST':
@@ -148,7 +148,7 @@ def display_song_data():
             return render_template('song_data.html', song_data = result)
     return render_template('song_data.html')
 
->>>>>>> ayman
+# >>>>>>> ayman
 
 
 if __name__ == "__main__":
