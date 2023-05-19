@@ -57,3 +57,15 @@ Jian Hong Li -- 2023-5-17 1:20 PM
 --------------------------------------------------------------
     - Features
     - Some bootstrap
+
+Karen Shekyan -- 2023-5-18 2:00 PM
+--------------------------------------------------------------
+  - Summary of tour:
+    - Google charts helps with displaying graphs/charts of
+      data
+      - Also includes hover text
+    - Team CtrlAltDefeat got musixmatch to work!
+    - Python's json library allows for nice manipulation of
+      data (as demonstrated by goobergang)
+    - Several teams are using search bars w/ autocomplete and
+      have a similar implementation to our idea
