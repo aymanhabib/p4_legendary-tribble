@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            /* CSS styles for the table */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-family: Verdana, sans-serif;
+            }
+            
+            th, td {
+                padding: 12px 15px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            
+            th {
+                background-color: #2c3e50;
+                color: #fff;
+                font-weight: bold;
+            }
+            
+            tr:hover {
+                background-color: #34495e;
+            }
+            
+            td a {
+                color: #3498db;
+                text-decoration: none;
+            }
+            
+            td a:hover {
+                text-decoration: underline;
+            }
+            
+            /* Additional CSS styles for the table */
+            body {
+                background-color: #2c3e50;
+                margin: 0;
+                padding: 20px;
+                color: #fff;
+            }
+            
+            h1 {
+                text-align: center;
+                margin-top: 40px;
+                font-size: 24px;
+                color: #fff;
+            }
+            
+            .video-container {
+                position: relative;
+                width: 100%;
+                padding-bottom: 56.25%; /* 16:9 aspect ratio (height/width) */
+                margin-bottom: 10px;
+            }
+            
+            .video-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .chart-container {
+                display: flex;
+                justify-content: space-around;
+                margin-top: 20px;
+            }
+            
+            .chart-container > div {
+                width: 50%;
+            }
+            
+            @media (max-width: 768px) {
+                table {
+                    font-size: 14px;
+                }
+                
+                th, td {
+                    padding: 8px 10px;
+                }
+                
+                h1 {
+                    font-size: 20px;
+                    margin-top: 20px;
+                }
+            }
+        </style>
+    
+<body>
+    <h1>SPOTIFY VS YOUTUBE MUSIC DATA ANALYSIS</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Song</th>
+                <th>Artist</th>
+                <th>YouTube Preview</th>
+                <th>Views</th>
+                <th>Likes</th>
+                <th>Comments</th>
+                <th>Top Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Ella Baila Sola</td>
+                <td>Eslabon Armado</td>
+                <td>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/lZiaYpD9ZrI" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </td>
+                <td>156,159,243</td>
+                <td>1,398,161</td>
+                <td>24,532</td>
+                <td>Gracias mi gente por todo el apoyo!!!!!</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>un x100to</td>
+                <td>Grupo Frontera</td>
+                <td>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/3inw26U-os4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </td>
+                <td>183,930,162</td>
+                <td>2,218,905</td>
+                <td>54,154</td>
+                <td>soy de ARGENTINA PERO VENGO ESCUCHANDO ESTE GRUPO HACE COMO 5 MESES LOS BANCO SALUDOS MEXICO</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Cupid - Twin Ver. - FIFTY FIFTY</td>
+                <td></td>
+                <td>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/6uvUTu716rU" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </td>
+                <td>27,359,261</td>
+                <td>443,951</td>
+                <td>6,754</td>
+                <td>not every kpop group can pull up a good English version song, but they just slay it</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>La Bebe - Remix - Yng Lvcas</td>
+                <td></td>
+                <td>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/3mchJ-EW9rM" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </td>
+                <td>198,520,503</td>
+                <td>1,155,403</td>
+                <td>17,209</td>
+                <td>acá nos reunimos los que llegamos antes de las 200 millones!</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Flowers - Miley Cyrus</td>
+                <td></td>
+                <td>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/G7KNmW9a75Y" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </td>
+                <td>436,887,476</td>
+                <td>6,676,826</td>
+                <td>163,743</td>
+                <td>I love how she’s not singing about being wronged and hatred towards Liam instead using her voice to literally tell people to love themselves</td>
+            </tr>
+<!-- Song 6 -->
+<tr>
+    <td>6</td>
+    <td>Daylight</td>
+    <td>David Kushner</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/L-CrDzT-t3s" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>90,715</td>
+    <td>1,175</td>
+    <td>79</td>
+    <td>That was facken beautiful mate</td>
+</tr>
+<!-- Song 7 -->
+<tr>
+    <td>7</td>
+    <td>Kill Bill</td>
+    <td>SZA</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/war0kZFTVOI" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>16,021</td>
+    <td>263</td>
+    <td>10</td>
+    <td>This video deserves more likes</td>
+</tr>
+<!-- Song 8 -->
+<tr>
+    <td>8</td>
+    <td>As It Was</td>
+    <td>Harry Styles</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/H5v3kku4y6Q" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>509,704,495</td>
+    <td>7,199,358</td>
+    <td>188,138</td>
+    <td>ESTOY LLORANDO DE LA FELICIDAD, ESTA CANCIÓN ES DEMASIADO BUENA, LA MELODÍA, LA LETRA, TE AMO HARRY &lt;3333</td>
+</tr>
+<!-- Song 9 -->
+<tr>
+    <td>9</td>
+    <td>Tattoo</td>
+    <td>Loreen</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/PcCD9n0ZYew" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>375,663</td>
+    <td>9,993</td>
+    <td>717</td>
+    <td>That song is just amazing gives me goosebumps every time! Your win is so deserved!</td>
+</tr>
+<!-- Song 10 -->
+<tr>
+    <td>10</td>
+    <td>TQG</td>
+    <td>KAROL G</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/jZGpkLElSu8" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>519,252,731</td>
+    <td>7,514,311</td>
+    <td>255,405</td>
+    <td>Ya 500 millones vamos por mas se lo meresen estas reynas colombianas</td>
+</tr>
+<!-- Repeat the same format for the remaining songs -->
+<!-- Song 11 -->
+<tr>
+    <td>11</td>
+    <td>Acróstico</td>
+    <td>Shakira</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/PWmJhh_qTSY" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>32,327,777</td>
+    <td>2,617,869</td>
+    <td>110,779</td>
+    <td>Ya 32 Milones un placer contribuir con ustedes y no paremos de reproducir</td>
+</tr>
+<!-- Song 12 -->
+<tr>
+    <td>12</td>
+    <td>Classy 101</td>
+    <td>Feid</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/cD5T1Y4b7wA" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>67,620,863</td>
+    <td>760,393</td>
+    <td>9,174</td>
+    <td>la escucho todos los dias, amo esta canció ojala vengan más colaboraciones de estos dos genios!!</td>
+</tr>
+<!-- Song 13 -->
+<tr>
+    <td>13</td>
+    <td>Cha Cha Cha</td>
+    <td>Käärijä</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/rJHe-iZ5HSI" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>8,343,922</td>
+    <td>94,934</td>
+    <td>15,368</td>
+    <td>Nice of Finland to enter a nice calm folk song for once</td>
+</tr>
+<!-- Song 14 -->
+<tr>
+    <td>14</td>
+    <td>Creepin' (with The Weeknd &amp; 21 Savage)</td>
+    <td>Metro Boomin</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/61ymOWwOwuk" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>33,523,799</td>
+    <td>455,285</td>
+    <td>6,719</td>
+    <td>This song hits different when you grow up and understand life..</td>
+</tr>
+<!-- Song 15 -->
+<tr>
+    <td>15</td>
+    <td>BESO</td>
+    <td>ROSALÍA</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/QXQQAsIhHMw" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>58,208,147</td>
+    <td>1,046,062</td>
+    <td>18,162</td>
+    <td>Tu eres el exponente infinito la “x” y la “+” te queda pequeña la luna</td>
+</tr>
+<!-- Song 16 -->
+<tr>
+    <td>16</td>
+    <td>Die For You (with Ariana Grande) - Remix</td>
+    <td>The Weeknd</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/YQ-qToZUybM" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>86,539,771</td>
+    <td>1,452,836</td>
+    <td>34,667</td>
+    <td>a perfect duet is worth the wait (even seven years) &lt;3</td>
+</tr>
+<!-- Song 17 -->
+<tr>
+    <td>17</td>
+    <td>Calm Down (with Selena Gomez)</td>
+    <td>Rema</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/WcIcVapfqXw" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>452,958,534</td>
+    <td>5,866,335</td>
+    <td>143,763</td>
+    <td>Truly one of my favorite songs at the moment. Selena knows how to make great collaborations and this one isn’t any different. True gem.</td>
+</tr>
+<!-- Song 18 -->
+<tr>
+    <td>18</td>
+    <td>See You Again (feat. Kali Uchis)</td>
+    <td>Tyler, The Creator</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/TGgcC5xg9YI" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>105,294,316</td>
+    <td>1,925,850</td>
+    <td>46,336</td>
+    <td>Kalis voice angelic</td>
+</tr>
+<!-- Song 19 -->
+<tr>
+    <td>19</td>
+    <td>Yandel 150</td>
+    <td>Yandel</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/WHejvUhX6rk" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>216,396,712</td>
+    <td>970,358</td>
+    <td>14,601</td>
+    <td>La vieja escuela con frescura, me encanta!  definitivamente será un clásico de reggaeton</td>
+</tr>
+<!-- Song 20 -->
+<tr>
+    <td>20</td>
+    <td>PRC</td>
+    <td>Peso Pluma</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/kJflWOiAc6I" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>62,381,196</td>
+    <td>706,892</td>
+    <td>13,131</td>
+    <td>Le puse esta rola a mi abuela en su funeral y se levantó a subirle</td>
+</tr>
+<!-- Song 21 -->
+<tr>
+    <td>21</td>
+    <td>El Azul</td>
+    <td>Junior H</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1fa_npv6y9I" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>32,661,063</td>
+    <td>294,573</td>
+    <td>3,976</td>
+    <td>Creo que todos esperamos el junte de Junior H x Natanael Cano y Peso Pluma</td>
+</tr>
+<!-- Song 22 -->
+<tr>
+    <td>22</td>
+    <td>Boy's a Liar Pt. 2</td>
+    <td>PinkPantheress</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/oftolPu9qp4" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>118,216,081</td>
+    <td>1,762,563</td>
+    <td>45,222</td>
+    <td>The type of music to play when the boys aren’t around</td>
+</tr>
+<!-- Song 23 -->
+<tr>
+    <td>23</td>
+    <td>Anti-Hero</td>
+    <td>Taylor Swift</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/b1kbLwvqugk" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>97,239,073</td>
+    <td>1,207,050</td>
+    <td>21,169</td>
+    <td>OMG, this song is literally a masterpiece! Taylor Swift never disappoints!</td>
+</tr>
+<!-- Song 24 -->
+<tr>
+    <td>24</td>
+    <td>ALOHA</td>
+    <td>MÅNE</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/8D3d92ilXt0" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>2,223,173</td>
+    <td>12,126</td>
+    <td>211</td>
+    <td>Esta canción está llena de amor y nostalgia, ¡es simplemente hermosa!</td>
+</tr>
+<!-- Song 25 -->
+<tr>
+    <td>25</td>
+    <td>Aesthetic Baby</td>
+    <td>Yebba</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/EE9MhATjvAQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>8,084,269</td>
+    <td>72,934</td>
+    <td>1,078</td>
+    <td>Her voice is so soothing and beautiful. Can't get enough of this song!</td>
+</tr>
+<!-- Song 26 -->
+<tr>
+    <td>26</td>
+    <td>Por Tí</td>
+    <td>Camilo</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/rWMU7mV6Q1E" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>96,957,321</td>
+    <td>1,389,445</td>
+    <td>25,218</td>
+    <td>Amo a Camilo. Siempre con música muy bonita y letras que llegan al corazón</td>
+</tr>
+<!-- Song 27 -->
+<tr>
+    <td>27</td>
+    <td>Transmutada</td>
+    <td>Faruz Feet</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/BqBlQXVKVnU" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>10,179,141</td>
+    <td>113,624</td>
+    <td>2,327</td>
+    <td>La mezcla de los dos es perfecta, amo esta colaboración!</td>
+</tr>
+<!-- Song 28 -->
+<tr>
+    <td>28</td>
+    <td>EVERLASTING</td>
+    <td>CHAI</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ujx2UHgOFxI" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>1,956,879</td>
+    <td>32,903</td>
+    <td>665</td>
+    <td>This song is a burst of energy and positivity. Love it!</td>
+</tr>
+<!-- Song 29 -->
+<tr>
+    <td>29</td>
+    <td>Blind Leading the Blind</td>
+    <td>Florence + The Machine</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/d5z6D2lxD9Q" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>24,329,291</td>
+    <td>342,852</td>
+    <td>4,431</td>
+    <td>As always, Florence's voice is mesmerizing. Such a powerful song!</td>
+</tr>
+<!-- Song 30 -->
+<tr>
+    <td>30</td>
+    <td>Back to Me</td>
+    <td>Holly Humberstone</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/hNnLis39YrI" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>4,165,968</td>
+    <td>54,263</td>
+    <td>741</td>
+    <td>Holly's voice is hauntingly beautiful. This song gives me chills.</td>
+</tr>
+<!-- Song 31 -->
+<tr>
+    <td>31</td>
+    <td>Puñalada</td>
+    <td>Anuel AA</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/jV9BqN3wWfM" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>138,748,132</td>
+    <td>881,804</td>
+    <td>16,496</td>
+    <td>Anuel siempre entregando fuego en cada canción</td>
+</tr>
+<!-- Song 32 -->
+<tr>
+    <td>32</td>
+    <td>Supa Star</td>
+    <td>BBNO$</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1_h6N95Hbw8" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>22,360,790</td>
+    <td>310,525</td>
+    <td>5,302</td>
+    <td>This song is just too catchy. Can't help but bop along!</td>
+</tr>
+<!-- Song 33 -->
+<tr>
+    <td>33</td>
+    <td>Homicide</td>
+    <td>Trippie Redd</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/0jsGMRP1PuY" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>12,641,400</td>
+    <td>226,739</td>
+    <td>3,993</td>
+    <td>Trippie Redd always brings the fire. Love his flow!</td>
+</tr>
+<!-- Song 34 -->
+<tr>
+    <td>34</td>
+    <td>Supersonic</td>
+    <td>Tommy Cash</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Z1J9gF4aGx4" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>7,586,880</td>
+    <td>108,023</td>
+    <td>1,864</td>
+    <td>This song and video are on a whole new level of weirdness. Tommy Cash never disappoints!</td>
+</tr>
+<!-- Song 35 -->
+<tr>
+    <td>35</td>
+    <td>Space Melody</td>
+    <td>VIZE</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/i8fV0jxnyng" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>90,415,628</td>
+    <td>1,000,438</td>
+    <td>15,889</td>
+    <td>This song has such a great vibe. Perfect for dancing!</td>
+</tr>
+<!-- Song 36 -->
+<tr>
+    <td>36</td>
+    <td>Robbery (with Juice WRLD)</td>
+    <td>Josh A</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/OzpnvaGUwnc" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>16,753,001</td>
+    <td>304,057</td>
+    <td>6,192</td>
+    <td>This collaboration is pure gold. Josh A and Juice WRLD make an amazing duo!</td>
+</tr>
+<!-- Song 37 -->
+<tr>
+    <td>37</td>
+    <td>Take My Breath</td>
+    <td>The Weeknd</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Yq-KhEdURdg" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>285,137,625</td>
+    <td>3,731,619</td>
+    <td>112,383</td>
+    <td>The Weeknd never fails to deliver. This song is pure perfection!</td>
+</tr>
+
+<!-- Song 38 -->
+<tr>
+    <td>38</td>
+    <td>Blinding Lights</td>
+    <td>The Weeknd</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/4NRXx6U8ABQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>2,020,164,319</td>
+    <td>12,321,620</td>
+    <td>323,695</td>
+    <td>One of The Weeknd's best songs. Can't get enough of it!</td>
+</tr>
+<!-- Song 39 -->
+<tr>
+    <td>39</td>
+    <td>Spice Girl</td>
+    <td>Aminé</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/0q8dDe6_7y0" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>39,269,476</td>
+    <td>633,731</td>
+    <td>11,704</td>
+    <td>Aminé always brings the vibes. This song is so catchy!</td>
+</tr>
+<!-- Song 40 -->
+<tr>
+    <td>40</td>
+    <td>Levitating</td>
+    <td>Dua Lipa</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/XXYlFuWEuKI" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>1,284,236,727</td>
+    <td>10,376,938</td>
+    <td>253,829</td>
+    <td>Dua Lipa never disappoints. This song is a bop!</td>
+</tr>
+<!-- Song 41 -->
+<tr>
+    <td>41</td>
+    <td>Industry Baby</td>
+    <td>Lil Nas X</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/4Zh-Y6pTjR0" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>391,254,815</td>
+    <td>4,769,653</td>
+    <td>134,862</td>
+    <td>Lil Nas X always brings the heat. This song is 🔥</td>
+</tr>
+<!-- Song 42 -->
+<tr>
+    <td>42</td>
+    <td>Gimme More</td>
+    <td>Britney Spears</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/En0PUXsEDdU" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>268,400,934</td>
+    <td>1,651,197</td>
+    <td>30,096</td>
+    <td>Classic Britney! This song never gets old.</td>
+</tr>
+<!-- Song 43 -->
+<tr>
+    <td>43</td>
+    <td>Can't Stop the Feeling!</td>
+    <td>Justin Timberlake</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ru0K8uYEZWw" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>1,326,625,446</td>
+    <td>6,831,291</td>
+    <td>199,876</td>
+    <td>This song always puts me in a good mood. Justin Timberlake nailed it!</td>
+</tr>
+<!-- Song 44 -->
+<tr>
+    <td>44</td>
+    <td>Take a Bow</td>
+    <td>Rihanna</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/J3UjJ4wKLkg" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>763,413,131</td>
+    <td>4,157,067</td>
+    <td>76,741</td>
+    <td>Rihanna's vocals in this song are incredible. Such a powerful ballad!</td>
+</tr>
+<!-- Song 45 -->
+<tr>
+    <td>45</td>
+    <td>Believe</td>
+    <td>Cher</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/m8CcbsAVHes" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>77,119,135</td>
+    <td>302,516</td>
+    <td>4,430</td>
+    <td>Cher's voice is iconic. This song is a true classic!</td>
+</tr>
+<!-- Song 46 -->
+<tr>
+    <td>46</td>
+    <td>Shape of You</td>
+    <td>Ed Sheeran</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/JGwWNGJdvx8" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>6,205,790,157</td>
+    <td>34,185,671</td>
+    <td>843,847</td>
+    <td>Ed Sheeran's talent is unmatched. This song is a masterpiece!</td>
+</tr>
+<!-- Song 47 -->
+<tr>
+    <td>47</td>
+    <td>Bohemian Rhapsody</td>
+    <td>Queen</td>
+    <td>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/fJ9rUzIMcZQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </td>
+    <td>1,280,771,787</td>
+    <td>9,287,693</td>
+    <td>280,527</td>
+    <td>A timeless classic by Queen. This song will always be legendary!</td>
+</tr>
+
+
+
+
+
+        </tbody>
+    </table>
+  
+    <div style="display: block; justify-content: space-around; margin-top: 20px;">
+        <div style="width: 100%;">
+            <h2>Views Distribution</h2>
+            <canvas id="viewDistributionChart"></canvas>
+        </div>
+        <div style="width: 100%;">
+            <h2>Likes Distribution</h2>
+            <canvas id="likeDistributionChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Define the data for the view distribution
+        const viewData = [
+    { label: 'Ella Baila Sola - Eslabon Armado', value: 156159243 },
+    { label: 'un x100to - Grupo Frontera', value: 183930162 },
+    { label: 'Cupid - Twin Ver. - FIFTY FIFTY', value: 27359261 },
+    { label: 'La Bebe - Remix - Yng Lvcas', value: 198520503 },
+    { label: 'Flowers - Miley Cyrus', value: 436887476 },
+    { label: 'Daylight - David Kushner', value: 90715 },
+    { label: 'Kill Bill - SZA', value: 16021 },
+    { label: 'As It Was - Harry Styles', value: 509704495 },
+    { label: 'Tattoo - Loreen', value: 375663 },
+    { label: 'TQG - KAROL G', value: 519252731 },
+    { label: 'Acróstico - Shakira', value: 32327777 },
+    { label: 'Classy 101 - Feid', value: 67620863 },
+    { label: 'Cha Cha Cha - Käärijä', value: 8343922 },
+    { label: 'Creepin\' (with The Weeknd & 21 Savage) - Metro Boomin', value: 33523799 },
+    { label: 'BESO - ROSALÍA', value: 58208147 },
+    { label: 'Die For You (with Ariana Grande) - Remix - The Weeknd', value: 86539771 },
+    { label: 'Calm Down (with Selena Gomez) - Rema', value: 452958534 },
+    { label: 'See You Again (feat. Kali Uchis) - Tyler, The Creator', value: 105294316 },
+    { label: 'Yandel 150 - Yandel', value: 216396712 },
+    { label: 'PRC - Peso Pluma', value: 62381196 },
+    { label: 'El Azul - Junior H', value: 32661063 },
+    { label: 'Boy\'s a Liar Pt. 2 - PinkPantheress', value: 118216081 },
+    { label: 'Anti-Hero - Taylor Swift', value: 134399718 },
+    { label: 'Die For You - The Weeknd', value: 69926101 },
+    { label: 'I\'m Good (Blue) - David Guetta', value: 164792401 },
+    { label: 'Last Night - Morgan Wallen', value: 28763936 },
+    { label: 'I Wanna Be Yours - Arctic Monkeys', value: 255397035 },
+    { label: 'All My Life (feat. J. Cole) - Lil Durk', value: 6656 },
+    { label: 'Angels Like You - Miley Cyrus', value: 92298111 },
+    { label: 'golden hour - JVKE', value: 94023374 },
+    { label: 'AMG - Natanael Cano', value: 202962808 },
+    { label: 'Here With Me - d4vd', value: 41349622 },
+    { label: 'Shakira: Bzrp Music Sessions, Vol. 53 - Bizarrap', value: 546476422 },
+    { label: 'Another Love - Tom Odell', value: 94206 },
+    { label: 'Moonlight - Kali Uchis', value: 4185493 },
+    { label: 'Until I Found You (with Em Beihold) - Em Beihold Version - Stephen Sanchez', value: 5253753 },
+    { label: 'Unholy (feat. Kim Petras) - Sam Smith', value: 180444856 },
+    { label: 'Starboy - The Weeknd', value: 2239758009 },
+    { label: 'Cruel Summer - Taylor Swift', value: 67072154 },
+    { label: 'Like Crazy - Jimin', value: 56693092 },
+    { label: 'People - Libianca', value: 54363 },
+    { label: 'Hey Mor - Ozuna', value: 255060735 },
+    { label: 'I Ain\'t Worried - OneRepublic', value: 169289435 },
+    { label: 'Por las Noches - Peso Pluma', value: 139704579 },
+    { label: 'La Bachata - Manuel Turizo', value: 486327177 },
+    { label: 'Mockingbird - Eminem', value: 14885 },
+    { label: 'Queen of Kings - Alessandra', value: 4331203 },
+    { label: 'Yellow - Coldplay', value: 9768487 },
+    { label: 'Frágil - Yahritza Y Su Esencia', value: 52252329 },
+    { label: 'El Gordo Trae El Mando - Chino Pacas', value: 80411407 }
+
+        ];
+
+        // Set up the view distribution chart configuration
+        const viewChartConfig = {
+            type: 'bar',
+            data: {
+                labels: viewData.map(item => item.label),
+                datasets: [{
+                    label: 'Views',
+                    data: viewData.map(item => item.value),
+                    backgroundColor: '#FFFFFF',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    display: false
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: true
+                        }
+                    }
+                }
+            }
+        };
+
+        // Create and render the view distribution chart
+        const viewCtx = document.getElementById('viewDistributionChart').getContext('2d');
+        new Chart(viewCtx, viewChartConfig);
+
+        // Define the data for the like distribution
+        const likeData = [
+    { label: 'Ella Baila Sola - Eslabon Armado', value: 567216 },
+    { label: 'un x100to - Grupo Frontera', value: 798563 },
+    { label: 'Cupid - Twin Ver. - FIFTY FIFTY', value: 675928 },
+    { label: 'La Bebe - Remix - Yng Lvcas', value: 1002107 },
+    { label: 'Flowers - Miley Cyrus', value: 2891456 },
+    { label: 'Daylight - David Kushner', value: 468 },
+    { label: 'Kill Bill - SZA', value: 671 },
+    { label: 'As It Was - Harry Styles', value: 274235 },
+    { label: 'Tattoo - Loreen', value: 541 },
+    { label: 'TQG - KAROL G', value: 284726 },
+    { label: 'Acróstico - Shakira', value: 245437 },
+    { label: 'Classy 101 - Feid', value: 97016 },
+    { label: 'Cha Cha Cha - Käärijä', value: 4372 },
+    { label: 'Creepin\' (with The Weeknd & 21 Savage) - Metro Boomin', value: 20507 },
+    { label: 'BESO - ROSALÍA', value: 44246 },
+    { label: 'Die For You (with Ariana Grande) - Remix - The Weeknd', value: 59781 },
+    { label: 'Calm Down (with Selena Gomez) - Rema', value: 321764 },
+    { label: 'See You Again (feat. Kali Uchis) - Tyler, The Creator', value: 107562 },
+    { label: 'Yandel 150 - Yandel', value: 51893 },
+    { label: 'PRC - Peso Pluma', value: 104388 },
+    { label: 'El Azul - Junior H', value: 38957 },
+    { label: 'Boy\'s a Liar Pt. 2 - PinkPantheress', value: 136148 },
+    { label: 'Anti-Hero - Taylor Swift', value: 261492 },
+    { label: 'Die For You - The Weeknd', value: 176057 },
+    { label: 'I\'m Good (Blue) - David Guetta', value: 128716 },
+    { label: 'Last Night - Morgan Wallen', value: 8264 },
+    { label: 'I Wanna Be Yours - Arctic Monkeys', value: 201813 },
+    { label: 'All My Life (feat. J. Cole) - Lil Durk', value: 101 },
+    { label: 'Angels Like You - Miley Cyrus', value: 295735 },
+    { label: 'golden hour - JVKE', value: 174823 },
+    { label: 'AMG - Natanael Cano', value: 161822 },
+    { label: 'Here With Me - d4vd', value: 75212 },
+    { label: 'Shakira: Bzrp Music Sessions, Vol. 53 - Bizarrap', value: 348212 },
+    { label: 'Another Love - Tom Odell', value: 2442 },
+    { label: 'Moonlight - Kali Uchis', value: 43198 },
+    { label: 'Until I Found You (with Em Beihold) - Em Beihold Version - Stephen Sanchez', value: 5407 },
+    { label: 'Unholy (feat. Kim Petras) - Sam Smith', value: 167482 },
+    { label: 'Starboy - The Weeknd', value: 786564 },
+    { label: 'Cruel Summer - Taylor Swift', value: 149802 },
+    { label: 'Like Crazy - Jimin', value: 548960 },
+    { label: 'People - Libianca', value: 445 },
+    { label: 'Hey Mor - Ozuna', value: 166739 },
+    { label: 'I Ain\'t Worried - OneRepublic', value: 319901 },
+    { label: 'Por las Noches - Peso Pluma', value: 246967 },
+    { label: 'La Bachata - Manuel Turizo', value: 812360 },
+    { label: 'Mockingbird - Eminem', value: 931 },
+    { label: 'Queen of Kings - Alessandra', value: 15076 },
+    { label: 'Yellow - Coldplay', value: 39058 },
+    { label: 'Frágil - Yahritza Y Su Esencia', value: 329952 },
+    { label: 'El Gordo Trae El Mando - Chino Pacas', value: 420480 }
+];
+
+
+        // Set up the like distribution chart configuration
+        const likeChartConfig = {
+            type: 'pie',
+            data: {
+                labels: likeData.map(item => item.label),
+                datasets: [{
+                    data: likeData.map(item => item.value),
+                    backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56', '#4bc0c0', '#9966ff'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
+        };
+
+        // Create and render the like distribution chart
+        const likeCtx = document.getElementById('likeDistributionChart').getContext('2d');
+        new Chart(likeCtx, likeChartConfig);
+    </script>
+</body>
+</html>
+
