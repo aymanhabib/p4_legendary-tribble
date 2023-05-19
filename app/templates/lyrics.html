@@ -10,33 +10,33 @@
     <script src="../static/js/script.js"></script>
   </head>
 
-  <body class="bg-light">
+  <body style="background-color: #121212; color: #b3b3b3;">
 
     <div class="container py-5">
       <div class="row">
         <div class="col-lg-12">
           <div class="mb-5 text-center">
-            <h1 class="display-4"> Lyric Generator </h1>
-            <p class="lead">Unleash your creativity with the power of Markov Chains lol</p>
+            <h1 class="display-4" style="color: #1DB954;"> Lyric Generator </h1>
+            <p class="lead text-light">Unleash your creativity with the power of Markov Chains Idk</p>
           </div>
         </div>
         <div class="col-lg-6 mb-4">
-          <div class="p-5 bg-white rounded shadow">
+          <div class="p-5 rounded shadow" style="background-color: #282828; color: #b3b3b3;">
             <h2> Complete the Lyrics </h2>
-            <hr class="my-4">
+            <hr class="my-4" style="border-color: #333;">
             <form action="/generate" method="POST">
               <div class="mb-3">
                 <label class="form-label">First Line:</label>
-                <input type="text" class="form-control" name="line">
+                <input type="text" class="form-control" style="background-color: #333; border-color: #333; color: #b3b3b3;" name="line">
               </div>
               <div class="mb-3">
-                <button type="submit" class="btn btn-primary">Generate</button>
+                <button type="submit" class="btn btn-success">Generate</button>
               </div>
             </form>
 
             <p> {{newText}} </p>
 
-            <hr class="my-4">
+            <hr class="my-4" style="border-color: #333;">
 
             <h5> Settings: </h5>
             <form action="/settings" method="POST">
@@ -44,43 +44,43 @@
                 <div class="col-sm-6">
                   <div class="mb-3">
                     <label class="form-label">Lines Generated:</label>
-                    <input type="number" class="form-control" name="lines" value={{dLines}} min="1" max="100">
+                    <input type="number" class="form-control" style="background-color: #333; border-color: #333; color: #b3b3b3;" name="lines" value={{dLines}} min="1" max="100">
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="mb-3">
                     <label class="form-label">Similarity to Existing Songs:</label>
-                    <input type="number" class="form-control" name="similarity" value={{dSim}} min="1" max="10">
+                    <input type="number" class="form-control" style="background-color: #333; border-color: #333; color: #b3b3b3;" name="similarity" value={{dSim}} min="1" max="10">
                   </div>
                 </div>
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary">Set</button>
+                  <button type="submit" class="btn btn-success">Set</button>
                 </div>
               </div>
             </form>
           </div>
         </div>
         <div class="col-lg-6 mb-4">
-          <div class="p-5 bg-white rounded shadow">
+          <div class="p-5 rounded shadow" style="background-color: #282828; color: #b3b3b3;">
             <h2> Mixer </h2>
-            <hr class="my-4">
+            <hr class="my-4" style="border-color: #333;">
             <form action="/generate" method="POST">
               <div class="mb-3">
                 <label class="form-label">First Song</label>
-                <input type="text" class="form-control" name="line">
+                <input type="text" class="form-control" style="background-color: #333; border-color: #333; color: #b3b3b3;" name="line">
               </div>
               <div class="mb-3">
-                <button type="submit" class="btn btn-primary">Generate</button>
+                <button type="submit" class="btn btn-success">Generate</button>
               </div>
             </form>
 
             <form action="/generate" method="POST">
               <div class="mb-3">
                 <label class="form-label">Second Song</label>
-                <input type="text" class="form-control" name="line">
+                <input type="text" class="form-control" style="background-color: #333; border-color: #333; color: #b3b3b3;" name="line">
               </div>
               <div class="mb-3">
-                <button type="submit" class="btn btn-primary">Generate</button>
+                <button type="submit" class="btn btn-success">Generate</button>
               </div>
             </form>
           </div>
