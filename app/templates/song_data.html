@@ -16,8 +16,7 @@
       </div>
 
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      {{song_data}}
-      {{song_data['danceability']}}
+    <div class="chart-container" style="width:50%; height:50%; top:50%; left:50%;">
     <script>
         const ctx = document.getElementById('myChart');
         new Chart(ctx, {
@@ -25,7 +24,6 @@
             data: {
                 labels: ['danceability', 'energy', 'acousticness', 'speechiness', 'liveness'],
                 datasets: [{
-                    label: 'Music data',
                     data: ["{{song_data['danceability']}}", "{{song_data['energy']}}", "{{song_data['acousticness']}}", "{{song_data['speechiness']}}", "{{song_data['liveness']}}"],
                     fill: true,
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -37,7 +35,19 @@
   
                 }]
             },
+            options: {
+            scales: {
+              r: {
+                angleLines: {
+                  display: false
+                },
+                suggestedMin: 0.7,
+                suggestedMax: 1
+              }
+            }
+            }
         }
         )
     </script>
+  </div>
  </body>
