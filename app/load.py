@@ -37,7 +37,7 @@ import sqlite3
 db = sqlite3.connect("lyrics.db", check_same_thread=False) #CRUCIAL
 global c
 c = db.cursor()
-c.execute("CREATE TABLE if not exists lyrics(name TEXT, lyr TEXT)")
+c.execute("CREATE TABLE IF NOT EXISTS lyrics(name TEXT, lyr TEXT, UNIQUE(name, lyr))")
 
 
 songs = [f for f in listdir('./lyrics/STORAGE') if isfile(join('./lyrics/STORAGE', f))]
@@ -53,11 +53,14 @@ for i in range(len(songs)):
     lyrics = lyrics.replace("\"", "")
     lyrics = lyrics.replace("“", "")
     lyrics = lyrics.replace("”", "")
-    lyrics = re.sub(r'_+(.*\n*)*', "", lyrics)
+    lyrics = re.sub(r'_+(.*\n*)*', "", lyrics) #metadata handling
 
 
-    c.execute("INSERT INTO lyrics VALUES (?,?)", (songs[i], lyrics))
-    db.commit()
+    try:
+        c.execute("INSERT INTO lyrics VALUES (?,?)", (songs[i], lyrics))
+        db.commit()
+    except:
+        pass
 
 
     lyrics = lyrics.split()
@@ -85,3 +88,8 @@ import json
 data = open("./lyrics/data.txt", "r")
 data = json.load(data)
 # print(data)
+
+
+# temp = list(c.execute("SELECT name FROM lyrics").fetchall())
+# print(len(temp))
+# db.close()

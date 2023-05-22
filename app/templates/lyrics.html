@@ -29,7 +29,7 @@
               <input type="submit" value="Generate" class="button-2" role="button" style="margin-top:10px;"></input>
             </form>
 
-            <p> {{newText}} </p>
+            <p> {{newText|safe}} </p>
 
             <h5> Settings: </h5>
             <form action="/settings" method="POST">
@@ -62,17 +62,26 @@
           <div class="p-3 border-0">
             <h2> Mixer </h2>
 
-            <form action="/generate" method="POST">
-              <label><span class="label"> First Song </span></label><br>
-              <input type="text" name="line"></input><br>
-              <input type="submit" value="Generate!" class="button-2" role="button" style="margin-top:10px;"></input>
+            <form action="/song1">
+              <label><span class="label"> First Song: {{input1}} </span></label><br>
+              <input list="songs" name="songs1">
+              <datalist id="songs">
+                {% for song in songlist %}
+                  <option name="song" value="{{song|safe}}">
+                {% endfor %}
+              </datalist>
+              <input type="submit" value="Select">
             </form>
 
-            <form action="/generate" method="POST">
-              <label><span class="label"> Second Song </span></label><br>
-              <input type="text" name="line"></input><br>
-              <input type="submit" value="Generate!" class="button-2" role="button" style="margin-top:10px;"></input>
+            <form action="/song2">
+              <label><span class="label"> Second Song: {{input2}} </span></label><br>
+              <input list="songs" name="songs2">
+              <input type="submit" value="Select">
             </form>
+
+            <a class="btn btn-primary" href="/mix" role="button">Mix</a>
+
+            <p> {{mixText|safe}} </p>
 
           </div>
         </div>

@@ -2,6 +2,7 @@ from flask import Flask, render_template, session, request, redirect, url_for
 import requests, os, json
 from database import *
 from spotify_api import *
+import random
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32) # This is NOT secure
@@ -9,12 +10,16 @@ app.secret_key = os.urandom(32) # This is NOT secure
 # For lyric generation
 lines = 30
 similarity = 1
+song1 = ""
+song2 = ""
 
 @app.route('/')
 def log_in():
-    global lines, similarity
+    global lines, similarity, song1, song2
     lines = 30
     similarity = 1
+    song1 = ""
+    song2 = ""
     if 'username' in session: # If already logged in
         return redirect('/home', user = session["username"])
     return render_template('login.html') # For login AND signup
@@ -103,29 +108,128 @@ def artist():
             return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
     return render_template('artist.html')
 
-#<<<<<<< HEAD
+
 
 @app.route('/lyrics', methods = ['GET','POST'])
-def lyrics(*text):
+def lyrics(newtext="", mixtext=""):
     if 'username' in session: # If already logged in
-        if (len(text) == 0): #weird handling?
-            text = ""
+        if (len(newtext) == 0): #weird handling?
+            newtext = ""
         else:
-            text = text[0]
-        return render_template('lyrics.html', newText = text, dLines = lines, dSim = similarity)
+            pass
+
+        db = sqlite3.connect("lyrics.db", check_same_thread=False) #CRUCIAL
+        global c
+        c = db.cursor()
+        temp = list(c.execute("SELECT name FROM lyrics").fetchall())
+        allSongs = []
+        for element in temp:
+            allSongs += [element[0]]
+        # print(allSongs)
+        db.close()
+
+        return render_template('lyrics.html', newText = newtext, dLines = lines, dSim = similarity, songlist = allSongs, input1=song1, input2=song2, mixText=mixtext)
     return render_template('login.html')
 
-@app.route('/generate', methods = ['GET','POST'])
+@app.route('/generate', methods = ['POST'])
 def generate():
     data = open("./lyrics/data.txt", "r")
     data = json.load(data)
-    print(len(data))
 
-    text = ""
-    for i in range(lines * 8): #words per line
-        text += ""
+    text = request.form.to_dict(flat=False)["line"][0]
+    words = list(data.keys())
+    try:
+        nextWords = data[text.split()[len(text.split())-1]] #use .get instead of []. [] errors on bad key, .get returns None and allows for edit distance
+    except:
+        return redirect('/lyrics')
 
-    return lyrics(text) #weird?
+    if (not text[len(text)-1] == " "):
+        text += " "
+
+    wordsOnLine = 0
+    for i in range(lines * 6): #words per line
+        newWord = nextWords[random.randint(0, len(nextWords)-1)]
+        try:
+            nextWords = data[newWord]
+        except:
+            nextWords = data[words[random.randint(0,len(words)-1)]]
+        text += newWord + " "
+        wordsOnLine += 1
+        if (wordsOnLine == 6):
+            text += "<br>"
+            wordsOnLine = 0
+
+    return lyrics(newtext=text) #weird?
+
+@app.route('/song1', methods = ['GET', 'POST'])
+def songSelect1():
+    if 'username' in session: # If already logged in
+        global song1
+        song1 = request.args.to_dict(flat=False)['songs1'][0]
+        return redirect('/lyrics')
+    return render_template('login.html')
+
+@app.route('/song2', methods = ['GET', 'POST'])
+def songSelect2():
+    if 'username' in session: # If already logged in
+        global song2
+        song2 = request.args.to_dict(flat=False)['songs2'][0]
+        return redirect('/lyrics')
+    return render_template('login.html')
+
+@app.route('/mix', methods = ['GET', 'POST'])
+def mix():
+    if 'username' in session: # If already logged in
+        db = sqlite3.connect("lyrics.db", check_same_thread=False) #CRUCIAL
+        global c
+        c = db.cursor()
+
+        try:
+            lyrics1 = list(c.execute("SELECT lyr FROM lyrics WHERE name=?", (song1,)))[0][0]
+            lyrics2 = list(c.execute("SELECT lyr FROM lyrics WHERE name=?", (song2,)))[0][0]
+        except:
+            db.close()
+            return redirect('/lyrics')
+        db.close()
+
+        connections = {}
+        lyrics1 = lyrics1.split()
+        for j in range(len(lyrics1) - 1):
+            word = lyrics1[j]
+            nextWords = connections.get(word, [])
+            if(len(nextWords) > 0):
+                nextWords += [lyrics1[j+1]]
+            else:
+                connections.update({word: [lyrics1[j+1]]})
+        lyrics2 = lyrics2.split()
+        for j in range(len(lyrics2) - 1):
+            word = lyrics2[j]
+            nextWords = connections.get(word, [])
+            if(len(nextWords) > 0):
+                nextWords += [lyrics2[j+1]]
+            else:
+                connections.update({word: [lyrics2[j+1]]})
+
+        text = ""
+        words = list(connections.keys())
+        nextWord = words[random.randint(0, len(words)-1)]
+        counter = 0
+        while (counter < 180):
+            counter += 1
+            text += nextWord + " "
+            if (counter % 6 == 0):
+                text += "<br>"
+
+            try:
+                possibleWords = connections[nextWord]
+            except:
+                possibleWords = connections[words[random.randint(0,len(words)-1)]]
+
+            nextWord = possibleWords[random.randint(0, len(possibleWords)-1)]
+        text = text[0].upper() + text[1:]
+
+        return lyrics(mixtext=text)
+    return render_template('login.html')
 
 @app.route('/settings', methods = ['GET','POST'])
 def settings():
@@ -135,7 +239,9 @@ def settings():
     global similarity
     similarity = int(value["similarity"][0])
     return redirect('/lyrics')
-#=======
+
+
+
 @app.route('/song_data', methods = ['GET', 'POST'])
 def display_song_data():
     if request.method == 'POST':
@@ -151,7 +257,6 @@ def display_song_data():
 @app.route('/visual', methods = ["POST", "GET"])
 def visual():
     return render_template('visualizerdata.html')
-# >>>>>>> ayman
 
 
 if __name__ == "__main__":

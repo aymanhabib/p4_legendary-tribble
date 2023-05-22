@@ -1,13 +1,18 @@
 
 
 body {
-    background-color: black; 
-    color: #777;
+    background-color: black;
+    color: white;
 }
 
 .pure-img-responsive {
     max-width: 100%;
     height: auto;
+}
+
+.inner-pre {
+    font-size: 17px;
+    font: "Sans-serif";
 }
 
 /*
