@@ -98,3 +98,8 @@ Karen Shekyan -- 2023-5-18 2:00 PM
       data (as demonstrated by goobergang)
     - Several teams are using search bars w/ autocomplete and
       have a similar implementation to our idea
+
+ayman4 -- 2023-5-21 8:30 PM
+--------------------------------------------------------------
+    - FINALLY figured out the droplet (ish...)
+    - Graph song data in radial chart using Chart.js
