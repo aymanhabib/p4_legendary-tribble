@@ -39,7 +39,7 @@ def home():
 @app.route('/login', methods = ["POST"])
 def authenticate():
     if 'username' in session:
-        return render_template('home.html', user = 'username')
+        return render_template('home.html', user = session['username'])
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']

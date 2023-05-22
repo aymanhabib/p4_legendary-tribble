@@ -10,12 +10,26 @@
     <script src="../static/js/script.js"></script>
   </head>
 
-  <form action="/artist" method="POST">
-    <label><span class="label"> Input an artist name </span></label><br>
-    <input type="text" name="artist_name"></input><br><br>
-    <input type="submit" value="Submit" class="button-2" role="button"></input>
-  </form>
-<br></br>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="mb-5 text-center">
+          <h1 class="display-4" style="color: #1DB954;"> Artist Search </h1>
+          <p class="lead text-light">Search any artist your heart desires!</p>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <div class="p-5 rounded shadow" style="background-color: #282828; color: #b3b3b3;">
+          <hr class="my-4" style="border-color: #333;">
+          <form action="/artist" method="POST">
+            <div class="mb-3">
+              <label class="form-label">Input an artist's name:</label>
+              <input type="text" class="form-control" style="background-color: #333; border-color: #333; color: #b3b3b3;" name="artist_name"></input>
+            </div>
+            <div class="mb-3">
+              <button type="submit" value="Submit" class="btn btn-success" role="button">Search</button>
+            </div>
+            </form>
 <h2 class = "text-success"> {{artist}} </h2>
 <p class = > {{data}} </p>
 <h2 class = "text-danger"> {{message}} </h2>
