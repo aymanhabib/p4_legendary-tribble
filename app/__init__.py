@@ -74,7 +74,10 @@ def sign_up():
 @app.route('/profile', methods = ['POST','GET'])
 def profile():
     if 'username' in session:
-        return render_template('profile.html', Username = session['username'])
+        if request.method == "POST":
+            return render_template('profile.html', Username = session['username'])
+        if request.method == "GET":
+            return redirct("/home")
 
 @app.route('/change_pw', methods = ['GET','POST'])
 def changepw():
