@@ -61,18 +61,15 @@ def sign_up():
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
-        email = request.form['email']
     if request.method == 'GET':
         user = request.args['username']
         pw = request.args['password']
-        email = request.args['email']
-    if '@' in email and '.' in email.split('@')[1]:
-        if signup(user,pw,email):
+        if signup(user,pw):
             return render_template('login.html')
         else:
-            return render_template('login.html', errorTextS= "User already exists")
+            return render_template('login.html', errorTextS= "User already exist")
     else:
-        return render_template('login.html', errorTextS = "Invalid email")
+        return render_template('login.html', errorTextS = "User already exist")
 
 @app.route('/profile', methods = ['POST','GET'])
 def profile():

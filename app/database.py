@@ -5,7 +5,7 @@ global c
 c = db.cursor()
 
 # making tables
-c.execute("CREATE TABLE if not exists users(username TEXT, password TEXT, email TEXT)")
+c.execute("CREATE TABLE if not exists users(username TEXT, password TEXT)")
 
 # general method that can be used to get data easier
 def select_from(database, table, data_want, datagive, datatype_give):
@@ -27,13 +27,13 @@ def username_in_system(username):
                 return True
     return False
 
-def signup(username, password, email):
+def signup(username, password):
     db = sqlite3.connect("user.db", check_same_thread=False)
     c = db.cursor()
     if(username_in_system(username)):
         return False
     else:
-        c.execute("INSERT INTO users VALUES (?,?,?)", (username, password, email))
+        c.execute("INSERT INTO users VALUES (?,?)", (username, password))
     db.commit()
     return True #save changes
 
@@ -55,12 +55,6 @@ def login(username, password):
         if(select_from("user.db", "users", "password", username, "username") == password):
             return True
     return False
-
-def get_email(username):
-    db = sqlite3.connect("user.db", check_same_thread=False)
-    c = db.cursor()
-    if (select_from("user.db", "users", "username", username, "username") != 0):
-        return select_from("user.db", "users", "email", username, "username")
 
 def DB_changepw(username, newpassword):
     db = sqlite3.connect("user.db", check_same_thread=False)

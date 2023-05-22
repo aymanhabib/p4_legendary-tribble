@@ -86,8 +86,8 @@ Jian Hong Li -- 2023-5-17 1:20 PM
 --------------------------------------------------------------
     - Features
     - Some bootstrap
-    
-    
+
+
 Eric Sohel -- 2023-5-17 2:00 PM
 --------------------------------------------------------------
  - Finished making graphs, finished working on css for every page, finihsed fixing music chart
@@ -105,7 +105,7 @@ Karen Shekyan -- 2023-5-18 2:00 PM
       have a similar implementation to our idea
 Eric Sohel -- 2023-5-17 2:00 PM
 --------------------------------------------------------------
- - worked on css a lot 
+ - worked on css a lot
 
 ayman4 -- 2023-5-21 8:30 PM
 --------------------------------------------------------------
@@ -117,3 +117,7 @@ Karen Shekyan -- 2023-5-21 8:50 PM
   - Added song mixer
   - Fixed minor issues with song generator
   - /lyrics page no longer crashes EVER
+
+Jian Hong Li -- 2023-5-22 3:00 PM
+--------------------------------------------------------------
+      - Removed email requirement
