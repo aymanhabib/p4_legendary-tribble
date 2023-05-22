@@ -44,8 +44,7 @@ def authenticate():
         user = request.form['username']
         pw = request.form['password']
     if request.method == 'GET':
-        user = request.args['username']
-        pw = request.args['password']
+        return redirect('/')
     if login(user,pw):
         if request.method == 'POST':
             session['username'] = request.form['username']
