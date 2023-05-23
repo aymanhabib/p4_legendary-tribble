@@ -52,6 +52,28 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-dark sticky-top navbar-expand-lg bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/home">
+          <!-- CURRENT page title -->
+          <img src=""> Home
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <!-- <a class="nav-link active" aria-current="page" href="/home">Home</a> -->
+            <a class="nav-link" href="/profile">Profile</a>
+            <a class="nav-link" href="/artist">Artist</a>
+            <a class="nav-link" href="/lyrics">Lyrics</a>
+            <a class="nav-link" href="/visual">Visual</a>
+            <a class="nav-link" href="/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <div class="container text-center">
       <div class="row g-2">
         <div class="col-12">
@@ -71,7 +93,7 @@
               <input type="password" name="newpass" class="form-control"></input><br> <!-- Using Bootstrap form control class -->
               <label><span class="label"> Re-enter new Password </span></label><br>
               <input type="password" name="confirmpass" class="form-control"></input><br> <!-- Using Bootstrap form control class -->
-              <input type="submit" value="change" class="button-2 btn btn-outline-light" role="button"></input> <!-- Using Bootstrap button class -->
+              <input type="submit" value="Change" class="button-2 btn btn-outline-light" role="button"></input> <!-- Using Bootstrap button class -->
           </div>
         </div>
       </div>

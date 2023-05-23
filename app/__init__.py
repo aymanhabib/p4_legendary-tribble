@@ -72,10 +72,9 @@ def sign_up():
 @app.route('/profile', methods = ['POST','GET'])
 def profile():
     if 'username' in session:
-        if request.method == "POST":
-            return render_template('profile.html', Username = session['username'])
-        if request.method == "GET":
-            return redirect("/home")
+        return render_template('profile.html', Username = session['username'])
+    else:
+        return redirect('/')
 
 @app.route('/change_pw', methods = ['GET','POST'])
 def changepw():
@@ -93,18 +92,20 @@ def changepw():
 
 @app.route('/artist', methods = ['GET', 'POST'])
 def artist():
-    if request.method == 'POST':
-        if not request.form['artist_name']:
-            return render_template('artist.html', message = "Input is empty")
-        else:
-            artist = request.form['artist_name']
-            token = get_token()
-            result = search_for_artist(token, artist)
-            artist_id = result["id"]
-            songs = get_songs_by_artist(token, artist_id)
-            return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
-    return render_template('artist.html')
-
+    if 'username' in session:
+        if request.method == 'POST':
+            if not request.form['artist_name']:
+                return render_template('artist.html', message = "Input is empty")
+            else:
+                artist = request.form['artist_name']
+                token = get_token()
+                result = search_for_artist(token, artist)
+                artist_id = result["id"]
+                songs = get_songs_by_artist(token, artist_id)
+                return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
+        return render_template('artist.html')
+    else:
+        return redirect('/')
 
 
 @app.route('/lyrics', methods = ['GET','POST'])
@@ -235,30 +236,39 @@ def mix():
 
 @app.route('/settings', methods = ['GET','POST'])
 def settings():
-    value = request.form.to_dict(flat=False)
-    global lines
-    lines = int(value["lines"][0])
-    global similarity
-    similarity = int(value["similarity"][0])
-    return redirect('/lyrics')
+    if 'username' in session:
+        value = request.form.to_dict(flat=False)
+        global lines
+        lines = int(value["lines"][0])
+        global similarity
+        similarity = int(value["similarity"][0])
+        return redirect('/lyrics')
+    else:
+        return redirect('/')
 
 
 
 @app.route('/song_data', methods = ['GET', 'POST'])
 def display_song_data():
-    if request.method == 'POST':
-        if not request.form['song_name']:
-            return render_template('song_data.html', message = "Invalid input")
-        else:
-            song = request.form['song_name']
-            token = get_token()
-            result = get_song_features(token, song)
-            return render_template('song_data.html', song_data = result)
-    return render_template('song_data.html')
+    if 'username' in session:
+        if request.method == 'POST':
+            if not request.form['song_name']:
+                return render_template('song_data.html', message = "Invalid input")
+            else:
+                song = request.form['song_name']
+                token = get_token()
+                result = get_song_features(token, song)
+                return render_template('song_data.html', song_data = result)
+        return render_template('song_data.html')
+    else:
+        return redirect('/')
 
 @app.route('/visual', methods = ["POST", "GET"])
 def visual():
-    return render_template('visualizerdata.html')
+    if 'username' in session:
+        return render_template('visualizerdata.html')
+    else:
+        return redirect('/')
 
 
 if __name__ == "__main__":

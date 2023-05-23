@@ -130,3 +130,4 @@ Jian Hong Li -- 2023-5-22 3:00 PM
 Karen Shekyan -- 2023-5-23 1:40 PM
 --------------------------------------------------------------
   - Fixed major bug on lyrics page
+  - Added navbar to profile page
