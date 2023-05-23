@@ -58,7 +58,7 @@ def authenticate():
 @app.route('/signup', methods = ["POST"])
 def sign_up():
     if 'username' in session:
-        return redirct("/")
+        return redirect("/")
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
@@ -75,7 +75,7 @@ def profile():
         if request.method == "POST":
             return render_template('profile.html', Username = session['username'])
         if request.method == "GET":
-            return redirct("/home")
+            return redirect("/home")
 
 @app.route('/change_pw', methods = ['GET','POST'])
 def changepw():
