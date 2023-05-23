@@ -62,7 +62,7 @@ def sign_up():
         user = request.form['username']
         pw = request.form['password']
         if signup(user,pw):
-            return render_template('login.html', errorTextS = "Sign up Successful")
+            return render_template('login.html', successText = "Sign up successful")
         else:
             return render_template('login.html', errorTextS= "User already exist")
     else:
