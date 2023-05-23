@@ -13,7 +13,7 @@ similarity = 1
 song1 = ""
 song2 = ""
 
-@app.route('/')
+@app.route("/", methods=['GET', 'POST'])
 def log_in():
     global lines, similarity, song1, song2
     lines = 30
@@ -21,7 +21,7 @@ def log_in():
     song1 = ""
     song2 = ""
     if 'username' in session: # If already logged in
-        return redirect('/home', user = session["username"])
+        return render_template('home.html', user = session["username"])
     return render_template('login.html') # For login AND signup
 
 @app.route('/logout')
@@ -32,54 +32,48 @@ def logout():
 
 @app.route('/home', methods = ['POST', 'GET'])
 def home():
-    if (session): # If logged in, show the home page
+    if 'username' in session: # If logged in, show the home page
         return render_template('home.html', user = session['username'])
     else: # ...else show the login page
         return redirect('/')
 
-@app.route('/login', methods = ["POST"])
+@app.route("/login", methods=['GET', 'POST'])
 def authenticate():
     if 'username' in session:
-        return render_template('home.html', user = session['username'])
+        return redirect("/")
+    if request.method == 'GET':
+        return redirect('/')
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
-    if request.method == 'GET':
-        user = request.args['username']
-        pw = request.args['password']
     if login(user,pw):
         if request.method == 'POST':
             session['username'] = request.form['username']
         if request.method == 'GET':
             session['username'] = request.args['username']
-        return redirect('/home')
-    else:
-        return render_template('login.html', errorTextL= "Please enter a valid username and password")
+    return redirect('/')
 
 @app.route('/signup', methods = ["POST"])
 def sign_up():
     if 'username' in session:
-        return render_template('home.html', user = 'username')
+        return redirct("/")
     if request.method == 'POST':
         user = request.form['username']
         pw = request.form['password']
-        email = request.form['email']
-    if request.method == 'GET':
-        user = request.args['username']
-        pw = request.args['password']
-        email = request.args['email']
-    if '@' in email and '.' in email.split('@')[1]:
-        if signup(user,pw,email):
-            return render_template('login.html')
+        if signup(user,pw):
+            return render_template('login.html', successText = "Sign up successful")
         else:
-            return render_template('login.html', errorTextS= "User already exists")
+            return render_template('login.html', errorTextS= "User already exist")
     else:
-        return render_template('login.html', errorTextS = "Invalid email")
+        return render_template('login.html', errorTextS = "User already exist")
 
 @app.route('/profile', methods = ['POST','GET'])
 def profile():
     if 'username' in session:
-        return render_template('profile.html', Username = session['username'])
+        if request.method == "POST":
+            return render_template('profile.html', Username = session['username'])
+        if request.method == "GET":
+            return redirct("/home")
 
 @app.route('/change_pw', methods = ['GET','POST'])
 def changepw():
@@ -266,4 +260,4 @@ def visual():
 
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  app.run(host='0.0.0.0', debug=True)
