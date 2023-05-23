@@ -33,9 +33,9 @@
           padding: 15px 32px;
           text-align: center;
           text-decoration: none;
-          display: inline-block;
+          display: block; /* To center the button */
+          margin: 0 auto; /* To center the button */
           font-size: 16px;
-          margin: 4px 2px;
           transition-duration: 0.4s;
           cursor: pointer;
       }
@@ -56,30 +56,31 @@
       <div class="row g-2">
         <div class="col-12">
           <div class="p-3 title border-0 bg-transparent">
-            <h2> Hello {{Username}}!! </h2>
+            <h2 class="text-warning"> Hello {{Username}}!! </h2> <!-- Making text similar to Spotify theme -->
             <p> Description </p>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-6 mx-auto">
           <div class="p-3 border-0">
             <h2> Update New Password </h2>
             <p> {{message}} </p>
-            <p style="color:#9A0000;"> {{errorTextS}} </p>
             <form action="/change_pw" method="GET">
               <label><span class="label"> Current Password </span></label><br>
-              <input type="password" name="oldpass"></input><br><br>
+              <input type="password" name="oldpass" class="form-control"></input><br> <!-- Using Bootstrap form control class -->
               <label><span class="label"> New Password </span></label><br>
-              <input type="password" name="newpass"></input><br><br>
+              <input type="password" name="newpass" class="form-control"></input><br> <!-- Using Bootstrap form control class -->
               <label><span class="label"> Re-enter new Password </span></label><br>
-              <input type="password" name="confirmpass"></input><br><br>
-              <input type="submit" value="change" class="button-2" role="button"></input>
+              <input type="password" name="confirmpass" class="form-control"></input><br> <!-- Using Bootstrap form control class -->
+              <input type="submit" value="change" class="button-2 btn btn-outline-light" role="button"></input> <!-- Using Bootstrap button class -->
           </div>
         </div>
       </div>
     </div>
 
 <form method="POST">
-  <button class="p-1 mb-3 rounded-3"formaction="/home">Return Home</button>
+  <div class="text-center"> <!-- To center the button -->
+    <button class="p-1 mb-3 rounded-3 btn btn-outline-light"formaction="/home">Return Home</button> <!-- Using Bootstrap button class -->
+  </div>
 </form>
 
 </body>
