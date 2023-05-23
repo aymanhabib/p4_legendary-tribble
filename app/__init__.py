@@ -51,6 +51,8 @@ def authenticate():
             session['username'] = request.form['username']
         if request.method == 'GET':
             session['username'] = request.args['username']
+    else:
+        return render_template('login.html', errorTextL = "Authentication Failed")
     return redirect('/')
 
 @app.route('/signup', methods = ["POST"])
