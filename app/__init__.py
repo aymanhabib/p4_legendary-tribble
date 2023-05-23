@@ -26,8 +26,9 @@ def log_in():
 
 @app.route('/logout')
 def logout():
-  session.pop('username')
-  return redirect('/')
+    if (session):
+        session.pop('username')
+    return redirect('/')
 
 @app.route('/home', methods = ['POST', 'GET'])
 def home():
@@ -133,17 +134,22 @@ def lyrics(newtext="", mixtext=""):
 
 @app.route('/generate', methods = ['POST'])
 def generate():
-    data = open("./lyrics/data.txt", "r")
+    data = open("./lyrics/data" + str(similarity) + ".txt", "r")
     data = json.load(data)
 
     text = request.form.to_dict(flat=False)["line"][0]
     words = list(data.keys())
     try:
-        nextWords = data[text.split()[len(text.split())-1]] #use .get instead of []. [] errors on bad key, .get returns None and allows for edit distance
+        nextWords = data.get(" ".join(text.split()[len(text.split())-similarity:])) #use .get instead of []. [] errors on bad key, .get returns None and allows for edit distance
+        print("trying...")
     except:
+        print("NOPE")
         return redirect('/lyrics')
 
-    if (not text[len(text)-1] == " "):
+    if (nextWords == None):
+        nextWords = data[words[random.randint(0,len(words))]]
+
+    if (not (len(text) == 0) and not (text[len(text)-1] == " ")):
         text += " "
 
     wordsOnLine = 0
@@ -152,7 +158,7 @@ def generate():
         try:
             nextWords = data[newWord]
         except:
-            nextWords = data[words[random.randint(0,len(words)-1)]]
+            nextWords = data[words[random.randint(0,len(words))]]
         text += newWord + " "
         wordsOnLine += 1
         if (wordsOnLine == 6):

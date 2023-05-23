@@ -41,7 +41,7 @@ c.execute("CREATE TABLE IF NOT EXISTS lyrics(name TEXT, lyr TEXT, UNIQUE(name, l
 
 
 songs = [f for f in listdir('./lyrics/STORAGE') if isfile(join('./lyrics/STORAGE', f))]
-connections = {}
+connections = []
 
 for i in range(len(songs)):
     file = open("./lyrics/STORAGE/" + songs[i], "r")
@@ -64,20 +64,25 @@ for i in range(len(songs)):
 
 
     lyrics = lyrics.split()
-    for j in range(len(lyrics) - 1): # Do for key length up to 10
-        word = lyrics[j]
-        nextWords = connections.get(word, [])
-        if(len(nextWords) > 0):
-            nextWords += [lyrics[j+1]]
-        else:
-            connections.update({word: [lyrics[j+1]]})
+
+    for keylen in range(1,11):
+        connections += [{}]
+        for j in range(len(lyrics) - keylen): # Do for key length up to 10
+            word = lyrics[j:j+keylen]
+            word = " ".join(word)
+            nextWords = connections[keylen-1].get(word, [])
+            if(len(nextWords) > 0):
+                nextWords += [lyrics[j+keylen]]
+            else:
+                connections[keylen-1].update({word: [lyrics[j+keylen]]})
 
 db.close()
 
-out = open("./lyrics/data.txt", "w")
-json.dump(connections, out)
-# out.write(str(connections))
-out.close()
+for i in range(1,11):
+    out = open("./lyrics/data" + str(i) + ".txt", "w")
+    json.dump(connections[i-1], out)
+    # out.write(str(connections))
+    out.close()
 
 
 ##################
@@ -85,9 +90,9 @@ out.close()
 ##################
 import json
 
-data = open("./lyrics/data.txt", "r")
+data = open("./lyrics/data10.txt", "r")
 data = json.load(data)
-# print(data)
+print(data)
 
 
 # temp = list(c.execute("SELECT name FROM lyrics").fetchall())
