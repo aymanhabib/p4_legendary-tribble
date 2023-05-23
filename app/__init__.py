@@ -50,9 +50,7 @@ def authenticate():
             session['username'] = request.form['username']
         if request.method == 'GET':
             session['username'] = request.args['username']
-        return redirect('/')
-    else:
-        return render_template('login.html', errorTextL= "Please enter a valid username and password")
+    return redirect('/')
 
 @app.route('/signup', methods = ["POST"])
 def sign_up():
