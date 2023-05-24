@@ -66,7 +66,7 @@ def sign_up():
 
 @app.route('/profile', methods = ['POST','GET'])
 def profile():
-    if 'username' in session:
+    if request.method == 'POST':
         return render_template('profile.html', Username = session['username'])
     else:
         return redirect('/home')
@@ -84,23 +84,25 @@ def changepw():
         message = DB_changepw(session['username'], new)
         return render_template('profile.html', message = message, Username = session['username'])
     return render_template('profile.html')
+@app.route('/artist', methods = ["POST"])
+def toArtist():
+    if request.method == 'POST':
+        return render_template('artist.html')
 
-@app.route('/artist', methods = ['GET', 'POST'])
+@app.route('/artists', methods = ['GET', 'POST'])
 def artist():
-    if 'username' in session:
-        if request.method == 'POST':
-            if not request.form['artist_name']:
-                return render_template('artist.html', message = "Input is empty")
-            else:
-                artist = request.form['artist_name']
-                token = get_token()
-                result = search_for_artist(token, artist)
-                artist_id = result["id"]
-                songs = get_songs_by_artist(token, artist_id)
-                return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
+    if request.method == 'POST':
+        if not request.form['artist_name']:
+            return render_template('artist.html', message = "Input is empty")
         else:
-            return render_template('artist.html')
-    return redirct("/home")
+            artist = request.form['artist_name']
+            token = get_token()
+            result = search_for_artist(token, artist)
+            artist_id = result["id"]
+            songs = get_songs_by_artist(token, artist_id)
+            return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
+    else:
+        return render_template('artist.html')
 
 @app.route('/lyrics', methods = ['GET','POST'])
 def lyrics(newtext="", mixtext=""):
