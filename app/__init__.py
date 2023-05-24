@@ -45,6 +45,7 @@ def authenticate():
     pw = request.form['password']
     if login(user,pw):
         session['username'] = request.form['username']
+        render_template('home.html', user = session["username"])
     else:
         return render_template('login.html', errorTextL = "Authentication Failed")
     return redirect('/')
