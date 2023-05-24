@@ -37,14 +37,14 @@ def home():
     else: # ...else show the login page
         return redirect('/')
 
-@app.route("/login", methods=['POST'])
+@app.route("/login", methods=['GET','POST'])
 def authenticate():
-    if request.method == 'POST':
-        user = request.form['username']
-        pw = request.form['password']
+    if request.method == 'GET':
+        return render_template('login.html')
+    user = request.form['username']
+    pw = request.form['password']
     if login(user,pw):
-        if request.method == 'POST':
-            session['username'] = request.form['username']
+        session['username'] = request.form['username']
     else:
         return render_template('login.html', errorTextL = "Authentication Failed")
     return redirect('/')
