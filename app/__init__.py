@@ -106,7 +106,7 @@ def artist():
 
 @app.route('/lyrics', methods = ['GET','POST'])
 def lyrics(newtext="", mixtext=""):
-    if 'username' in session: # If already logged in
+    if request.method == 'POST':
         if (len(newtext) == 0): #weird handling?
             newtext = ""
         else:
@@ -123,7 +123,6 @@ def lyrics(newtext="", mixtext=""):
         db.close()
 
         return render_template('lyrics.html', newText = newtext, dLines = lines, dSim = similarity, songlist = allSongs, input1=song1, input2=song2, mixText=mixtext)
-    return redirct('/home')
 
 @app.route('/generate', methods = ['POST'])
 def generate():
