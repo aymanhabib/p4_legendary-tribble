@@ -257,7 +257,7 @@ def display_song_data():
                 return render_template('song_data.html', song_data = result)
         return render_template('song_data.html')
     else:
-        return redirect('/home')
+        return redirect('/artist.html')
 
 @app.route('/visual', methods = ["POST", "GET"])
 def visual():
