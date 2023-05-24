@@ -66,7 +66,7 @@ def sign_up():
 
 @app.route('/profile', methods = ['POST','GET'])
 def profile():
-    if 'username' in session:
+    if request.method == "POST":
         return render_template('profile.html', Username = session['username'])
     else:
         return redirect('/')
@@ -98,10 +98,9 @@ def artist():
                 artist_id = result["id"]
                 songs = get_songs_by_artist(token, artist_id)
                 return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
-        return render_template('artist.html')
-    else:
-        return redirect('/')
-
+        else:
+            return render_template('artist.html')
+    return redirct("/")
 
 @app.route('/lyrics', methods = ['GET','POST'])
 def lyrics(newtext="", mixtext=""):
