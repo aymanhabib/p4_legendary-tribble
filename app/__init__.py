@@ -40,7 +40,7 @@ def home():
 @app.route("/login", methods=['GET', 'POST'])
 def authenticate():
     if 'username' in session:
-        return redirect("/")
+        return redirect('/')
     if request.method == 'GET':
         return redirect('/')
     if request.method == 'POST':
