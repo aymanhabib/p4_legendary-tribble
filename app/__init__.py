@@ -243,21 +243,17 @@ def settings():
         return redirect('/home')
 
 
-
 @app.route('/song_data', methods = ['GET', 'POST'])
 def display_song_data():
-    if 'username' in session:
-        if request.method == 'POST':
-            if not request.form['song_name']:
-                return render_template('song_data.html', message = "Invalid input")
-            else:
-                song = request.form['song_name']
-                token = get_token()
-                result = get_song_features(token, song)
-                return render_template('song_data.html', song_data = result)
-        return render_template('song_data.html')
-    else:
-        return redirect('/artist.html')
+    if request.method == 'POST':
+        if not request.form['song_name']:
+            return render_template('song_data.html', message = "Invalid input")
+        else:
+            song = request.form['song_name']
+            token = get_token()
+            result = get_song_features(token, song)
+            return render_template('song_data.html', song_data = result)
+    return render_template('song_data.html')
 
 @app.route('/visual', methods = ["POST", "GET"])
 def visual():
