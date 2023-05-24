@@ -32,7 +32,8 @@ def logout():
 
 @app.route('/home', methods = ['POST', 'GET'])
 def home():
-    return render_template('home.html', user = session['username'])
+    if request.method == 'POST':
+        return render_template('home.html', user = session['username'])
 
 @app.route("/login", methods=['GET','POST'])
 def authenticate():
