@@ -100,7 +100,7 @@ def artist():
                 return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
         else:
             return render_template('artist.html')
-    return redirct("/home")
+    return redirct("/song_data.html")
 
 @app.route('/lyrics', methods = ['GET','POST'])
 def lyrics(newtext="", mixtext=""):
@@ -255,7 +255,7 @@ def display_song_data():
                 return render_template('song_data.html', song_data = result)
         return render_template('song_data.html')
     else:
-        return redirect('/home')
+        return redirect('/artist.html')
 
 @app.route('/visual', methods = ["POST", "GET"])
 def visual():
