@@ -5,7 +5,7 @@ from spotify_api import *
 import random
 
 app = Flask(__name__)
-app.secret_key = os.urandom(32) # This is NOT secure
+app.secret_key =  b'_a#y2L"F4Q8z\n\xec]/' # This is NOT secure
 
 # For lyric generation
 lines = 30
