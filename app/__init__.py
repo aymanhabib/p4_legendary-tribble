@@ -87,20 +87,17 @@ def changepw():
 
 @app.route('/artist', methods = ['GET', 'POST'])
 def artist():
-    if 'username' in session:
-        if request.method == 'POST':
-            if not request.form['artist_name']:
-                return render_template('artist.html', message = "Input is empty")
-            else:
-                artist = request.form['artist_name']
-                token = get_token()
-                result = search_for_artist(token, artist)
-                artist_id = result["id"]
-                songs = get_songs_by_artist(token, artist_id)
-                return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
+    if request.method == 'POST':
+        if not request.form['artist_name']:
+            return render_template('artist.html', message = "Input is empty")
         else:
-            return render_template('artist.html')
-    return redirct("/artist.html")
+            artist = request.form['artist_name']
+            token = get_token()
+            result = search_for_artist(token, artist)
+            artist_id = result["id"]
+            songs = get_songs_by_artist(token, artist_id)
+            return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
+    return render_template('artist.html')
 
 @app.route('/lyrics', methods = ['GET','POST'])
 def lyrics(newtext="", mixtext=""):
@@ -241,21 +238,17 @@ def settings():
         return redirect('/home')
 
 
-
 @app.route('/song_data', methods = ['GET', 'POST'])
 def display_song_data():
-    if 'username' in session:
-        if request.method == 'POST':
-            if not request.form['song_name']:
-                return render_template('song_data.html', message = "Invalid input")
-            else:
-                song = request.form['song_name']
-                token = get_token()
-                result = get_song_features(token, song)
-                return render_template('song_data.html', song_data = result)
-        return render_template('song_data.html')
-    else:
-        return redirect('/artist.html')
+    if request.method == 'POST':
+        if not request.form['song_name']:
+            return render_template('song_data.html', message = "Invalid input")
+        else:
+            song = request.form['song_name']
+            token = get_token()
+            result = get_song_features(token, song)
+            return render_template('song_data.html', song_data = result)
+    return render_template('song_data.html')
 
 @app.route('/visual', methods = ["POST", "GET"])
 def visual():
