@@ -49,7 +49,7 @@ def remove_user(username):
 
 # to verify if the password given is right to login
 def login(username, password):
-    db = sqlite3.connect("user.db", check_same_thread=False)
+    db = sqlite3.connect("user.db")
     c = db.cursor()
     if(username_in_system(username)):
         if(select_from("user.db", "users", "password", username, "username") == password):
