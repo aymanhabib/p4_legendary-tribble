@@ -69,7 +69,7 @@ def profile():
     if request.method == "POST":
         return render_template('profile.html', Username = session['username'])
     else:
-        return redirect('/')
+        return redirect('/home')
 
 @app.route('/change_pw', methods = ['GET','POST'])
 def changepw():
@@ -100,7 +100,7 @@ def artist():
                 return render_template('artist.html', data = songs, artist = "Top 10 Songs by " + artist)
         else:
             return render_template('artist.html')
-    return redirct("/")
+    return redirct("/home")
 
 @app.route('/lyrics', methods = ['GET','POST'])
 def lyrics(newtext="", mixtext=""):
@@ -121,7 +121,7 @@ def lyrics(newtext="", mixtext=""):
         db.close()
 
         return render_template('lyrics.html', newText = newtext, dLines = lines, dSim = similarity, songlist = allSongs, input1=song1, input2=song2, mixText=mixtext)
-    return redirct('/')
+    return redirct('/home')
 
 @app.route('/generate', methods = ['POST'])
 def generate():
@@ -164,7 +164,7 @@ def songSelect1():
         global song1
         song1 = request.args.to_dict(flat=False)['songs1'][0]
         return redirect('/lyrics')
-    return render_template('login.html')
+    return render_template('home.html')
 
 @app.route('/song2', methods = ['GET', 'POST'])
 def songSelect2():
@@ -172,7 +172,7 @@ def songSelect2():
         global song2
         song2 = request.args.to_dict(flat=False)['songs2'][0]
         return redirect('/lyrics')
-    return render_template('login.html')
+    return render_template('home.html')
 
 @app.route('/mix', methods = ['GET', 'POST'])
 def mix():
@@ -238,7 +238,7 @@ def settings():
         similarity = int(value["similarity"][0])
         return redirect('/lyrics')
     else:
-        return redirect('/')
+        return redirect('/home')
 
 
 
@@ -255,14 +255,14 @@ def display_song_data():
                 return render_template('song_data.html', song_data = result)
         return render_template('song_data.html')
     else:
-        return redirect('/')
+        return redirect('/home')
 
 @app.route('/visual', methods = ["POST", "GET"])
 def visual():
     if 'username' in session:
         return render_template('visualizerdata.html')
     else:
-        return redirect('/')
+        return redirect('/home')
 
 
 if __name__ == "__main__":
