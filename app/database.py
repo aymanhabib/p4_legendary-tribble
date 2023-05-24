@@ -18,7 +18,7 @@ def select_from(database, table, data_want, datagive, datatype_give):
         return 0
 
 def username_in_system(username):
-    db = sqlite3.connect("user.db", check_same_thread=False)
+    db = sqlite3.connect("user.db")
     c = db.cursor()
     temp = list(c.execute("SELECT username FROM users").fetchall())
     for element in temp:
