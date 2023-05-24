@@ -121,7 +121,7 @@ def lyrics(newtext="", mixtext=""):
         db.close()
 
         return render_template('lyrics.html', newText = newtext, dLines = lines, dSim = similarity, songlist = allSongs, input1=song1, input2=song2, mixText=mixtext)
-    return render_template('login.html')
+    return redirct('/')
 
 @app.route('/generate', methods = ['POST'])
 def generate():
