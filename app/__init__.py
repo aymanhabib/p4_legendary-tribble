@@ -66,7 +66,7 @@ def sign_up():
 
 @app.route('/profile', methods = ['POST','GET'])
 def profile():
-    if request.method == "POST":
+    if 'username' in session:
         return render_template('profile.html', Username = session['username'])
     else:
         return redirect('/home')
