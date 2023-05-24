@@ -32,10 +32,7 @@ def logout():
 
 @app.route('/home', methods = ['POST', 'GET'])
 def home():
-    if 'username' in session: # If logged in, show the home page
-        return render_template('home.html', user = session['username'])
-    else: # ...else show the login page
-        return redirect('/')
+    return render_template('home.html', user = session['username'])
 
 @app.route("/login", methods=['GET','POST'])
 def authenticate():
@@ -68,8 +65,6 @@ def sign_up():
 def profile():
     if request.method == 'POST':
         return render_template('profile.html', Username = session['username'])
-    else:
-        return redirect('/home')
 
 @app.route('/change_pw', methods = ['GET','POST'])
 def changepw():
@@ -256,7 +251,7 @@ def display_song_data():
 
 @app.route('/visual', methods = ["POST", "GET"])
 def visual():
-    if 'username' in session:
+    if request.method == 'POST':
         return render_template('visualizerdata.html')
     else:
         return redirect('/home')
