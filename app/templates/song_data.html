@@ -23,10 +23,10 @@
         new Chart(ctx, {
             type: 'radar',
             data: {
-                labels: ['danceability', 'energy', 'acousticness', 'instrumentalness', 'valence', 'speechiness', 'liveness'],
+                labels: ['danceability', 'energy', 'valence', 'acousticness', 'instrumentalness', 'speechiness', 'liveness'],
                 datasets: [{
                     label: "Musical Analysis Data :0",
-                    data: ["{{song_data['danceability']}}", "{{song_data['energy']}}", "{{song_data['acousticness']}}", "{{song_data['instrumentalness']}}", "{{song_data['valence']}}", "{{song_data['speechiness']}}", "{{song_data['liveness']}}"],
+                    data: ["{{song_data['danceability']}}", "{{song_data['energy']}}", "{{song_data['valence']}}", "{{song_data['acousticness']}}", "{{song_data['instrumentalness']}}", "{{song_data['speechiness']}}", "{{song_data['liveness']}}"],
                     fill: true,
                     backgroundColor: 'rgba(29, 185, 84, 0.2)',
                     borderColor: 'rgb(29, 185, 84)',
