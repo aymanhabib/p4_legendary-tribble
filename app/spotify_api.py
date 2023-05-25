@@ -98,5 +98,7 @@ def get_chart_data(data):
     song_data['acousticness'] = data['acousticness']
     song_data['speechiness'] = data['speechiness']
     song_data['liveness'] = data['liveness']
+    song_data['instrumentalness'] = data['instrumentalness']
+    song_data['valence'] = data['valence']
     return song_data
 
